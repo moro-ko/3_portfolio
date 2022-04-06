@@ -1,2 +1,7 @@
-<h1>Admin::Categories#edit</h1>
-<p>Find me in app/views/admin/categories/edit.html.erb</p>
+<%= form_with model:@category, url: admin_category_path, method: :patch, local:true do |f| %>
+  <%= f.label :カテゴリ名 %><br>
+  <%= f.text_field :name %><br>
+  <%= f.text_field :remarks %><br>
+  <%= f.submit '変更を保存' %>
+  <%= link_to "削除する", admin_category_path(@category.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>
