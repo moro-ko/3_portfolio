@@ -28,17 +28,17 @@
 - 共感する活動を共に作り上げたいと考えるとき.
 
 ## 設計書
-- UIFlows.
+- UIFlows.  
 <https://drive.google.com/file/d/1SAuFDp-bLNDfEGUoTvqA9ssSaLKMpv72/view?usp=sharing>
-- wire_user.
+- wire_user.  
 <https://drive.google.com/file/d/1P8m6P-6W0ewpu2qT7umWcrCA09SVCzb1/view?usp=sharing>
-- wire_admin.
+- wire_admin.  
 <https://drive.google.com/file/d/1S2uP4upsnuvXEF8EQ4uLCbZ_4ITBNVa5/view?usp=sharing>
-- ER図.
+- ER図.  
 <https://drive.google.com/file/d/1UHrLgSNp0VydOG6CcER5k9JZ0EO9-KtU/view?usp=sharing>
-- テーブル定義書.
+- テーブル定義書.  
 <https://docs.google.com/spreadsheets/d/1upA9A4DfQIBI_dgWCvLiiW3q-vBklq58AFe9Gaeitnk/edit?usp=sharing>
-- アプリケーション詳細設計書.
+- アプリケーション詳細設計書.  
 <https://docs.google.com/spreadsheets/d/1InSMX9sojAt9-FSKXCGpGdWdBPDZYYvUkguuR4oS19M/edit?usp=sharing>
 
 ## 開発環境
