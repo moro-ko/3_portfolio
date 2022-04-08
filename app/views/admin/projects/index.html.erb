@@ -1,2 +1,29 @@
-<h1>Admin::Projects#index</h1>
-<p>Find me in app/views/admin/projects/index.html.erb</p>
+<div>検索枠</div>
+
+<h4>プロジェクト一覧</h4>
+
+<p>掲載済み</p>
+<% @projects.each do |project| %>
+  <% if project.posting_status == "completed" %>
+    <%= link_to admin_project_path(project) do %>
+      <%= image_tag project.image %>
+      <%= project.title %>
+      <p>現在支援金額</p>
+      <p>支援者数</p>
+      <p>残り</p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<p>未掲載</p>
+<% @projects.each do |project| %>
+  <% if project.posting_status == "examination" %>
+    <%= link_to admin_project_path(project) do %>
+      <%= image_tag project.image %>
+      <%= project.title %>
+      <p>現在支援金額</p>
+      <p>支援者数</p>
+      <p>残り</p>
+    <% end %>
+  <% end %>
+<% end %>

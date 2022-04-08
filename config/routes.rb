@@ -32,8 +32,8 @@ Rails.application.routes.draw do
         get 'withdraw'
       end
     end
-    resources :projects, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :returns, only: [:new, :create, :index, :edit, :update]
+    resources :projects, only: [:new, :create, :index, :show, :edit, :update]
+    resources :returns, only: [:new, :create, :index, :show, :edit, :update]
     resources :backers, only: [:new, :create, :index] do
       collection do
         post 'log'

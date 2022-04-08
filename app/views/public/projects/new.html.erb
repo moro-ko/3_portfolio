@@ -1,2 +1,23 @@
-<h1>Public::Projects#new</h1>
-<p>Find me in app/views/public/projects/new.html.erb</p>
+<h4>プロジェクト作成</h4>
+
+<%= form_with model: @project, url: projects_path, method: :post do |f| %>
+  <%= render "public/shared/error_messages", resource: @project %>
+
+  <h5>1.目標設定を行いましょう。</h5>
+    <p>目標金額</p>
+    <%= f.text_field:target_amount %>円
+    <p>募集終了日</p>
+    <%= f.date_field:end_date %>
+  <h5>2.概要を記載しましょう。</h5>
+    <p>タイトル</p>
+    <%= f.text_field:title %>
+    <p>本文</p>
+    <%= f.text_area:content %>
+    <p>カテゴリ</p>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %>
+  <h5>3.ビジュアルを設定しましょう。</h5>
+    <p>イメージ画像</p>
+    <%= f.file_field :image, accept: "image/*" %>
+  <br>
+  <%= f.submit "リターンの設定に進む" %>
+<% end %>

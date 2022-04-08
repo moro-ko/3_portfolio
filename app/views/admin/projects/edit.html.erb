@@ -1,2 +1,32 @@
-<h1>Admin::Projects#edit</h1>
-<p>Find me in app/views/admin/projects/edit.html.erb</p>
+<h4>プロジェクト内容</h4>
+
+<h5>1.目標設定</h5>
+  <p>目標金額</p>
+    <%= @project.target_amount %>円
+  <p>募集終了日</p>
+    <%= @project.end_date %>
+<h5>2.概要</h5>
+  <p>タイトル</p>
+    <%= @project.title %>
+  <p>本文</p>
+    <%= @project.content %>
+  <p>カテゴリ</p>
+    <%= @project.category.name %>
+<h5>3.ビジュアル</h5>
+  <p>イメージ画像</p>
+<h5>4.リターン</h5>
+  <p>後援型</p>
+    <%= @project.return.b_contents %>
+  <p>参加型</p>
+    <%= @project.return.p_contents %>
+
+<%= form_with model: @project, url: admin_project_path, method: :patch do |f| %>
+  <%= render "admin/shared/error_messages", resource: @project %>
+
+  <h5>5.掲載ステータス</h5>
+  <%= f.radio_button :posting_status, :examination %><%= f.label :posting_status, '審査中', value: 0  %>
+  <%= f.radio_button :posting_status, :completed %><%= f.label :posting_status, '審査完了', value: 1 %>
+  <br>
+  <%= f.submit "保存する" %>
+  <%= link_to "削除する", admin_project_path(@project.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>

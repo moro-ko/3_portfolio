@@ -1,2 +1,23 @@
-<h1>Public::Projects#edit</h1>
-<p>Find me in app/views/public/projects/edit.html.erb</p>
+<h4>プロジェクト編集</h4>
+
+<%= form_with model: @project, url: project_path, method: :patch do |f| %>
+  <%= render "public/shared/error_messages", resource: @project %>
+
+  <h5>1.目標設定</h5>
+    <p>目標金額</p>
+    <%= f.text_field:target_amount %>円
+    <p>募集終了日</p>
+    <%= f.date_field:end_date %>
+  <h5>2.概要</h5>
+    <p>タイトル</p>
+    <%= f.text_field:title %>
+    <p>本文</p>
+    <%= f.text_area:content %>
+    <p>カテゴリ</p>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %>
+  <h5>3.ビジュアル</h5>
+    <p>イメージ画像</p>
+    <%= f.file_field :image, accept: "image/*" %>
+  <br>
+  <%= f.submit "リターンの編集に進む" %>
+<% end %>

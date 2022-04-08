@@ -1,2 +1,18 @@
-<h1>Public::Returns#new</h1>
-<p>Find me in app/views/public/returns/new.html.erb</p>
+<h4>プロジェクト作成</h4>
+
+<%= form_with model: @returnv, url: returns_path, method: :post do |f| %>
+  <%= render "public/shared/error_messages", resource: @returnv %>
+
+  <h5>4.リターンの設定を行いましょう。</h5>
+    <h6>後援型</h6>
+    <p> 内容</p>
+    <%= f.text_area:b_contents %>
+    <br>
+    <h6>参加型</h6>
+    <p> 参加要件</p>
+    <%= f.text_area:p_contents %>
+    <p>参加者支援金額</p>
+    <%= f.text_field :p_amount %>円
+  <br>
+  <%= f.submit "保存する" %>
+<% end %>

@@ -1,2 +1,29 @@
-<h1>Public::Projects#show</h1>
-<p>Find me in app/views/public/projects/show.html.erb</p>
+
+<h3><%= @project.title %></h3>
+<%= @project.user.name %>
+<%= @project.category.name %><br>
+<%= image_tag @project.image %>
+<!-- 支援総額 -->
+<p>現在の支援総額</p><p>〇〇円</p>
+<!-- 支援者数 -->
+<p>支援者数</p><p>〇〇人</p>
+<!-- 参加者数 -->
+<p>参加者数</p><p>〇〇人</p>
+<!-- 残り日数-->
+<p>募集終了まで残り</p><p>〇〇日</p>
+
+<% if @project.user_id = current_user.id %>
+  <%= link_to "プロジェクトを編集する", edit_project_path %>
+<% else %>
+  <%= link_to "プロジェクトを支援する", backers_path %>
+  <p>♡お気に入り</p>
+<% end %>
+
+<p>ホーム</p>
+<%= @project.content %>
+<p></p>
+<p>ユーザー情報</p>
+<%= @project.user.name %>
+
+<p>リターン情報</p>
+<%= render "public/returns/show", returnv: @returnv %>

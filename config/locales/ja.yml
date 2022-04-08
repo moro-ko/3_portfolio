@@ -1,0 +1,6 @@
+ja:
+  enums:
+    project:
+      posting_status:
+        examination: "審査前"
+        completed: "審査完了"
