@@ -12,10 +12,10 @@
 <!-- 残り日数-->
 <p>募集終了まで残り</p><p>〇〇日</p>
 
-<% if @project.user_id = current_user.id %>
+<% if @project.user_id == current_user.id %>
   <%= link_to "プロジェクトを編集する", edit_project_path %>
 <% else %>
-  <%= link_to "プロジェクトを支援する", backers_path %>
+  <%= link_to "プロジェクトを支援する", selects_project_returns_path(@project) %>
   <p>♡お気に入り</p>
 <% end %>
 

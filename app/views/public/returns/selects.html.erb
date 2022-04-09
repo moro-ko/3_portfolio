@@ -1,0 +1,11 @@
+<p>支援タイプを確認し、選択してください</p>
+
+<%= link_to new_project_backer_path do %>
+  <p>後援型</p>
+  <%= @project.return.b_contents %>
+<% end %>
+
+<%= link_to new_project_participant_path do %>
+  <p>参加型</p>
+  <%= @project.return.p_contents %>
+<% end %>

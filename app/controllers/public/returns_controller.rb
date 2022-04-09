@@ -30,6 +30,10 @@ class Public::ReturnsController < ApplicationController
     redirect_to projects_path
   end
 
+  def selects
+    @project = Project.find(params[:project_id])
+  end
+
   private
 
   def returnv_params

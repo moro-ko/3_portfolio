@@ -14,10 +14,11 @@ Rails.application.routes.draw do
   #管理者用
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :projects, only: [:index, :show, :edit, :update, :destroy]
+    resources :projects, only: [:index, :show, :edit, :update, :destroy] do
+      resources :backers, only: [:index]
+      resources :participants, only: [:index]
+    end
     resources :categories, only: [:index, :create, :show, :edit, :update, :destroy]
-    resources :backers, only: [:index]
-    resources :participants, only: [:index]
   end
   # ユーザ用
   root to: "public/homes#top"
@@ -29,21 +30,26 @@ Rails.application.routes.draw do
         # 退会確認画面
         get 'unsubscribe'
         # 論理削除用のルーティング
-        get 'withdraw'
+        patch 'withdraw'
       end
     end
-    resources :projects, only: [:new, :create, :index, :show, :edit, :update]
-    resources :returns, only: [:new, :create, :index, :show, :edit, :update]
-    resources :backers, only: [:new, :create, :index] do
-      collection do
-        post 'log'
-        get 'complete'
+    resources :projects, only: [:new, :create, :index, :show, :edit, :update] do
+      resources :returns, only: [:new, :create, :index, :show, :edit, :update] do
+        collection do
+          get 'selects'
+        end
       end
-    end
-    resources :participants, only: [:new, :create, :index, :edit, :update] do
-      collection do
-        post 'log'
-        get 'complete'
+      resources :backers, only: [:new, :create, :index] do
+        collection do
+          post 'log'
+          get 'complete'
+        end
+      end
+      resources :participants, only: [:new, :create, :index, :edit, :update] do
+        collection do
+          post 'log'
+          get 'complete'
+        end
       end
     end
   end

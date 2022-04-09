@@ -1,2 +1,31 @@
-<h1>Public::Backers#log</h1>
-<p>Find me in app/views/public/backers/log.html.erb</p>
+<h4>入力内容確認</h4>
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>支援タイプ</td><td>後援型</td>
+    </tr>
+    <tr>
+      <td>支援金額</td><td><%= @backer.support_amount %>円</td>
+    </tr>
+    <tr>
+      <td>支払い方法</td><td>クレジットカード</td>
+    </tr>
+    <tr>
+      <td>応援コメント</td><td><%= @backer.comment %></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>内容を確定します。よろしければ「確定する」ボタンを押してください。</p>
+
+<%= form_with model: @backer, url: project_backers_path, method: :post do |f| %>
+  <%= f.hidden_field :support_amount %>
+  <%= f.hidden_field :comment %>
+  <%= f.submit "確定する" %>
+<% end %>

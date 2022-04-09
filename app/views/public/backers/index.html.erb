@@ -1,2 +1,24 @@
-<h1>Public::Backers#index</h1>
-<p>Find me in app/views/public/backers/index.html.erb</p>
+<table>
+  <% @backers.each do |backer| %>
+  <thead>
+    <tr>
+      <th>後援者</th>
+      <th>応援コメント</th>
+      <% if backer.project.user.id = current_user.id %>
+        <th>支援金額</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><p>写真</p><%= backer.user.name %></td>
+      <td><%= backer.comment %></td>
+      <td>
+        <% if backer.project.user = current_user %>
+          <%= backer.support_amount %>円
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

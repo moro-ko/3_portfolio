@@ -1,2 +1,20 @@
-<h1>Public::Participants#new</h1>
-<p>Find me in app/views/public/participants/new.html.erb</p>
+<h4>参加型支援</h4>
+
+<%= form_with model: @participant, url: log_project_participants_path, method: :post do |f| %>
+  <%= render "public/shared/error_messages", resource: @participant %>
+
+  <p>参加要件</p>
+  <%= @project.return.p_contents %>
+  <p>支援金額</p>
+  <%= @project.return.p_amount %>円
+  <p>支払い方法</p>
+  <p>◯クレジットカード　◯銀行振込　◯コンビニ</p>
+  <p>参加希望理由</p>
+  <%= f.text_area :reason %>
+  <p>連絡先</p>
+  <%= f.text_area :contact_address %>
+  <p>応援コメント</p>
+  <%= f.text_area :comment %>
+  <br>
+  <%= f.submit "次に進む" %>
+<% end %>

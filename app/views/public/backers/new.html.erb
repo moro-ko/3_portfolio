@@ -1,2 +1,14 @@
-<h1>Public::Backers#new</h1>
-<p>Find me in app/views/public/backers/new.html.erb</p>
+<h4>後援型支援</h4>
+
+<%= form_with model: @backer, url: log_project_backers_path, method: :post do |f| %>
+  <%= render "public/shared/error_messages", resource: @backer %>
+
+  <p>支援金額</p>
+  <%= f.text_field :support_amount %>円
+  <p>支払い方法</p>
+  <p>◯クレジットカード　◯銀行振込　◯コンビニ</p>
+  <p>応援コメント</p>
+  <%= f.text_area :comment %>
+  <br>
+  <%= f.submit "次に進む" %>
+<% end %>

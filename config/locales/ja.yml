@@ -4,3 +4,7 @@ ja:
       posting_status:
         examination: "審査前"
         completed: "審査完了"
+    participant:
+      approval_status:
+        approval: "承認前"
+        completed: "承認完了"

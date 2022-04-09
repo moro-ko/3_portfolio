@@ -1,2 +1,18 @@
-<h1>Admin::Backers#index</h1>
-<p>Find me in app/views/admin/backers/index.html.erb</p>
+<table>
+  <% @backers.each do |backer| %>
+  <thead>
+    <tr>
+      <th>後援者</th>
+      <th>応援コメント</th>
+      <th>支援金額</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><p>写真</p><%= backer.user.name %></td>
+      <td><%= backer.comment %></td>
+      <td><%= backer.support_amount %>円</td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

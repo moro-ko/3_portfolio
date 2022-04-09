@@ -1,2 +1,18 @@
-<h1>Public::Participants#edit</h1>
-<p>Find me in app/views/public/participants/edit.html.erb</p>
+<h4>申請内容</h4>
+
+<p>参加希望理由</p>
+  <%= @participant.reason %>
+<p>連絡先</p>
+  <%= @participant.contact_address %>
+<p>応援コメント</p>
+  <%= @participant.comment %>
+
+<%= form_with model: @participant, url: project_participant_path, method: :patch do |f| %>
+  <%= render "admin/shared/error_messages", resource: @participant %>
+
+  <h5>参加可否</h5>
+  <%= f.radio_button :approval_status, :approval %><%= f.label :approval_status, '承認前', value: 0  %>
+  <%= f.radio_button :approval_status, :completed %><%= f.label :approval_status, '承認完了', value: 1 %>
+  <br>
+  <%= f.submit "確定する" %>
+<% end %>

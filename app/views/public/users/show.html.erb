@@ -1,2 +1,18 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h4>マイページ</h4>
+
+<% if current_user.image.attached? %>
+  <%= image_tag current_user.image, size: "100×100" %>
+<% else %>
+  <%= image_tag 'no_image', size: "100×100" %>
+<% end %>
+<%= current_user.name %>
+<%= current_user.introduction %>
+<br>
+<%= link_to "編集する", edit_user_path(current_user) %>
+
+<p>支援プロジェクト</p>
+
+  
+
+<p>参加プロジェクト</p>
+<p>投稿プロジェクト</p>

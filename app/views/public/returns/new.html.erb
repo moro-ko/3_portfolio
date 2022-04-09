@@ -1,6 +1,6 @@
 <h4>プロジェクト作成</h4>
 
-<%= form_with model: @returnv, url: returns_path, method: :post do |f| %>
+<%= form_with model: @returnv, url: project_returns_path, method: :post do |f| %>
   <%= render "public/shared/error_messages", resource: @returnv %>
 
   <h5>4.リターンの設定を行いましょう。</h5>

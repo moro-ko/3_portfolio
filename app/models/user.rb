@@ -9,4 +9,12 @@ class User < ApplicationRecord
   has_many :backers, dependent: :destroy
   has_many :participants, dependent: :destroy
 
+  has_one_attached :image
+
+  # ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約をかける
+  # is_deletedがfalseならtrueを返す
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 end
