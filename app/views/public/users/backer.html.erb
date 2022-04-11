@@ -1,0 +1,40 @@
+<h4>マイページ</h4>
+
+<% if current_user.image.attached? %>
+  <%= image_tag current_user.image, size: "100×100" %>
+<% else %>
+  <%= image_tag 'no_image', size: "100×100" %>
+<% end %>
+<%= current_user.name %>
+<%= current_user.introduction %>
+<br>
+<%= link_to "編集する", edit_user_path(current_user) %>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/users/backer">支援プロジェクト</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/users/participant">参加プロジェクト</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/users/owner">投稿プロジェクト</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div id="photo1" class="tab-pane active">
+    <% @backer_projects.each do |project| %>
+      <%= link_to project_path(project) do %>
+        <% if project.image.attached? %>
+          <%= image_tag project.image, size: "100×100" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "100×100" %>
+        <% end %>
+      <% end %>
+      <%= project.title %>
+      <p>現在支援金額</p>
+      <p>支援者数</p>
+      <p>残り</p>
+    <% end %>
+  </div>
+</div>

@@ -10,6 +10,12 @@ class Public::ReturnsController < ApplicationController
     returnv.project_id = project.id
     returnv.save
     redirect_to projects_path
+    # returnv = Return.new(returnv_params)
+    # returnv.save
+    # returnv.project_id = returnv.id
+    # returnv.save
+    # redirect_to projects_path
+    # binding.pry
   end
 
   def index

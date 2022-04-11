@@ -1,7 +1,11 @@
 <% if admin_signed_in? %>
   <% owner_projects.each do |project| %>
     <%= link_to admin_project_path(project) do %>
-      <%= image_tag project.image %>
+      <% if project.image.attached? %>
+        <%= image_tag project.image, size: "100×100" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100×100" %>
+      <% end %>
       <%= project.title %>
       <p>現在支援金額</p>
       <p>支援者数</p>
@@ -11,7 +15,11 @@
 <% else %>
   <% owner_projects.each do |project| %>
     <%= link_to project_path(project) do %>
-      <%= image_tag project.image %>
+      <% if project.image.attached? %>
+        <%= image_tag project.image, size: "100×100" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100×100" %>
+      <% end %>
       <%= project.title %>
       <p>現在支援金額</p>
       <p>支援者数</p>

@@ -1,18 +1,20 @@
 class Public::UsersController < ApplicationController
-  def show
-    # 共通
+
+  def backer
     user = current_user
-    # 支援プロジェクト一覧表示(/backerへrender)
     backers = Backer.where(user_id: user.id).pluck(:project_id)
     @backer_projects = Project.find(backers)
-      # ↓支援プロジェクト一覧表示(backers/indexへrender)
-      # user = current_user
-      # @user_backers = user.backers
-    # 参加プロジェクト一覧表示(participantへrender)
+  end
+
+  def participant
+    user = current_user
     participant = Participant.where(user_id: user.id).pluck(:project_id)
     @participant_projects = Project.find(participant)
-    # 投稿プロジェクト一覧表示(ownewへrender)
-    @owner_projects = Project.where(user_id: current_user.id).includes(:user)
+  end
+
+  def owner
+    user = current_user
+    @owner_projects = Project.where(user_id: user.id).includes(:user)
   end
 
   def edit
@@ -45,9 +47,32 @@ end
 
 # メモーーーーー
 
-  # 支援プロジェクト一覧renderなしの場合に使用
-  # def backer
-  #   user = current_user
-  #   backers = Backer.where(user_id: user.id).pluck(:project_id)
-  #   @backer_projects = Project.find(backers)
+  # 支援プロジェクト一覧
+    # renderなしの場合に使用
+      # def backer
+      #   user = current_user
+      #   backers = Backer.where(user_id: user.id).pluck(:project_id)
+      #   @backer_projects = Project.find(backers)
+      # end
+    # /backerへrender
+      # backers = Backer.where(user_id: user.id).pluck(:project_id)
+      # @backer_projects = Project.find(backers)
+    # backers/indexへrender
+      # user = current_user
+      # @user_backers = user.backers
+
+  # def show
+    # 共通
+      # user = current_user
+    # 支援プロジェクト一覧表示(/backerへrender)
+      # backers = Backer.where(user_id: user.id).pluck(:project_id)
+      # @backer_projects = Project.find(backers)
+        # ↓支援プロジェクト一覧表示(backers/indexへrender)
+          # user = current_user
+          # @user_backers = user.backers
+    # 参加プロジェクト一覧表示(participantへrender)
+      # participant = Participant.where(user_id: user.id).pluck(:project_id)
+      # @participant_projects = Project.find(participant)
+    # 投稿プロジェクト一覧表示(ownewへrender)
+      # @owner_projects = Project.where(user_id: current_user.id).includes(:user)
   # end

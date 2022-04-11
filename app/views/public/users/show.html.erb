@@ -10,8 +10,26 @@
 <br>
 <%= link_to "編集する", edit_user_path(current_user) %>
 
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/users/backer">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+
+
+
 <p>支援プロジェクト</p>
-  <%= render "public/users/backer", backer_projects: @backer_projects %>
+  <!--<%#= render "public/users/backer", backer_projects: @backer_projects %>-->
   <!--renderなしで表示-->
     <!--<%# @user_backers.each do |backer| %>-->
     <!--  <%#= backer.project.title %>-->
@@ -19,8 +37,8 @@
   <!-- backers/indexへrender-->
     <!--<%#= render "public/backers/index", user_backers: @user_backers %>-->
 
-<p>参加プロジェクト</p>
-  <%= render "public/users/participant", participant_projects: @participant_projects %>
+<!--<p>参加プロジェクト</p>-->
+  <!--<%#= render "public/users/participant", participant_projects: @participant_projects %>-->
 
-<p>投稿プロジェクト</p>
-  <%= render "public/users/owner", owner_projects: @owner_projects %>
+<!--<p>投稿プロジェクト</p>-->
+  <!--<%#= render "public/users/owner", owner_projects: @owner_projects %>-->

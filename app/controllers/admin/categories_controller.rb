@@ -5,10 +5,10 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    category = Category.new(category_params)
-    category.save
+    @category = Category.new(category_params)
+    @category.save
     @categories = Category.all
-    render :index
+    redirect_to admin_categories_path
   end
 
   def edit
