@@ -4,6 +4,7 @@
   </div>
   <%= form_with model: @user, url: user_registration_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
+    
     <div class="field row p-2">
       <div class="col-5 text-right"><%= f.label :name %></div>
       <div class="col-5"><%= f.text_field :name %></div>

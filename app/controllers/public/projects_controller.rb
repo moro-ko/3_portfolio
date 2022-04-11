@@ -8,7 +8,7 @@ class Public::ProjectsController < ApplicationController
     project = Project.new(project_params)
     project.user_id = current_user.id
     project.save
-    redirect_to new_return_path
+    redirect_to new_project_return_path(project)
   end
 
   def index
@@ -38,7 +38,7 @@ class Public::ProjectsController < ApplicationController
   def update
     project = Project.find(params[:id])
     project.update(project_params)
-    redirect_to edit_return_path
+    redirect_to edit_project_return_path(project)
   end
 
   private

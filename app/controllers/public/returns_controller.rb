@@ -5,9 +5,9 @@ class Public::ReturnsController < ApplicationController
 
   def create
     # binding.pry
+    project = Project.find(params[:project_id])
     returnv = Return.new(returnv_params)
-    returnv.save
-    returnv.project_id = returnv.id
+    returnv.project_id = project.id
     returnv.save
     redirect_to projects_path
   end
