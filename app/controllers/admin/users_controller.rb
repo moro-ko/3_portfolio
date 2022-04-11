@@ -5,6 +5,14 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # 支援プロジェクト一覧表示(public/backerへrender)
+    backers = Backer.where(user_id: @user.id).pluck(:project_id)
+    @backer_projects = Project.find(backers)
+    # 参加プロジェクト一覧表示(public/participantへrender)
+    participant = Participant.where(user_id: @user.id).pluck(:project_id)
+    @participant_projects = Project.find(participant)
+    # 投稿プロジェクト一覧表示(public/ownewへrender)
+    @owner_projects = Project.where(user_id: @user.id).includes(:user)
   end
 
   def edit

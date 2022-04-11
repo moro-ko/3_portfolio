@@ -11,5 +11,8 @@
 <%= link_to "編集する", edit_admin_user_path(@user) %>
 
 <p>支援プロジェクト</p>
+  <%= render "public/users/backer", backer_projects: @backer_projects %>
 <p>参加プロジェクト</p>
+  <%= render "public/users/participant", participant_projects: @participant_projects %>
 <p>投稿プロジェクト</p>
+  <%= render "public/users/owner", owner_projects: @owner_projects %>

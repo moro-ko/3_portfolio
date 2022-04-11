@@ -1,7 +1,22 @@
-<%= form_with model:@category, url: admin_category_path, method: :patch, local:true do |f| %>
-  <%= f.label :カテゴリ名 %><br>
-  <%= f.text_field :name %><br>
-  <%= f.text_field :remarks %><br>
-  <%= f.submit '変更を保存' %>
-  <%= link_to "削除する", admin_category_path(@category.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<% end %>
+<div class="container">
+  <div class="row p-3">
+    <div class="col-5 text-right p-3"><h4 class="header">カテゴリ編集</h4></div>
+  </div>
+  <%= form_with model:@category, url: admin_category_path, method: :patch, local:true do |f| %>
+  <div class="field row p-2">
+    <div class="col-5 text-right"><%= f.label :カテゴリ名 %></div>
+    <div class="col-5"><%= f.text_field :name %></div>
+  </div>
+  <div class="field row p-2">
+    <div class="col-5 text-right"><%= f.label :備考 %></div>
+    <div class="col-5"><%= f.text_field :remarks %></div>
+  </div>
+  <div class="field row p-3">
+    <div class="col-5 text-right"><%= f.submit '変更を保存' %></div>
+    <div class="col-1"></div>
+    <div class="col-5">
+      <%= link_to "削除する", admin_category_path(@category.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    </div>
+  </div>
+  <% end %>
+</div>

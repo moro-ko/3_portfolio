@@ -31,6 +31,8 @@ Rails.application.routes.draw do
         get 'unsubscribe'
         # 論理削除用のルーティング
         patch 'withdraw'
+        # 支援プロジェクト一覧表示※部分テンプレートのため実装不要
+        # get 'backer'
       end
     end
     resources :projects, only: [:new, :create, :index, :show, :edit, :update] do

@@ -1,20 +1,39 @@
-<h4>参加型支援</h4>
+<div class="container">
+  <div class="row p-3">
+    <div class="col-1"></div>
+    <div class="col-5"><h4 class="header">参加型支援</h4></div>
+  </div>
 
-<%= form_with model: @participant, url: log_project_participants_path, method: :post do |f| %>
-  <%= render "public/shared/error_messages", resource: @participant %>
+  <%= form_with model: @participant, url: log_project_participants_path, method: :post do |f| %>
+    <%= render "public/shared/error_messages", resource: @participant %>
 
-  <p>参加要件</p>
-  <%= @project.return.p_contents %>
-  <p>支援金額</p>
-  <%= @project.return.p_amount %>円
-  <p>支払い方法</p>
-  <p>◯クレジットカード　◯銀行振込　◯コンビニ</p>
-  <p>参加希望理由</p>
-  <%= f.text_area :reason %>
-  <p>連絡先</p>
-  <%= f.text_area :contact_address %>
-  <p>応援コメント</p>
-  <%= f.text_area :comment %>
-  <br>
-  <%= f.submit "次に進む" %>
-<% end %>
+    <div class="row d-flex p-1">
+      <div class="col-5 text-right"><%= f.label :参加要件 %></div>
+      <div class="col-5"><%= @project.return.p_contents %></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :支援金額 %></div>
+      <div class="col-5"><%= @project.return.p_amount %>円</div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :支払い方法 %></div>
+      <div class="col-5">◯クレジットカード　◯銀行振込　◯コンビニ</div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :参加希望理由 %></div>
+      <div class="col-5"><%= f.text_area :reason %></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :連絡先 %></div>
+      <div class="col-5"><%= f.text_area :contact_address %></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :応援コメント %></div>
+      <div class="col-5"><%= f.text_area :comment %></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5"></div>
+      <div class="col-5"><%= f.submit "次に進む" %></div>
+    </div>
+  <% end %>
+</div>

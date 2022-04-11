@@ -1,18 +1,36 @@
-<h4>申請内容</h4>
+<div class="container">
+  <div class="row p-3">
+    <div class="col-5 text-right p-3"><h4 class="header">申請内容</h4></div>
+  </div>
 
-<p>参加希望理由</p>
-  <%= @participant.reason %>
-<p>連絡先</p>
-  <%= @participant.contact_address %>
-<p>応援コメント</p>
-  <%= @participant.comment %>
+  <%= form_with model: @participant, url: project_participant_path, method: :patch do |f| %>
+    <%= render "admin/shared/error_messages", resource: @participant %>
 
-<%= form_with model: @participant, url: project_participant_path, method: :patch do |f| %>
-  <%= render "admin/shared/error_messages", resource: @participant %>
-
-  <h5>参加可否</h5>
-  <%= f.radio_button :approval_status, :approval %><%= f.label :approval_status, '承認前', value: 0  %>
-  <%= f.radio_button :approval_status, :completed %><%= f.label :approval_status, '承認完了', value: 1 %>
-  <br>
-  <%= f.submit "確定する" %>
-<% end %>
+    <div class="field row d-block p-2">
+      <div class="col-10 text-center"><%= f.label :◆プロジェクト参加希望者の承認 %></div>
+    </div>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :参加希望理由 %></div>
+      <div class="col-5"><%= @participant.reason %></div>
+    </div>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :連絡先 %></div>
+      <div class="col-5"><%= @participant.contact_address %></div>
+    </div>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :応援コメント %></div>
+      <div class="col-5"><%= @participant.comment %></div>
+    </div>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :ステータス %></div>
+      <div class="col-5">
+        <%= f.radio_button :approval_status, :approval %><%= f.label :approval_status, '承認前', value: 0  %>
+        <%= f.radio_button :approval_status, :completed %><%= f.label :approval_status, '承認完了', value: 1 %>
+      </div>
+    </div>
+    <div class="field row p-2">
+      <div class="col-5"></div>
+      <div class="col-5"><%= f.submit "確定する" %></div>
+    </div>
+  <% end %>
+</div>

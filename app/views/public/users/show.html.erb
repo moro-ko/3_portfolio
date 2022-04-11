@@ -11,8 +11,16 @@
 <%= link_to "編集する", edit_user_path(current_user) %>
 
 <p>支援プロジェクト</p>
-
-  
+  <%= render "public/users/backer", backer_projects: @backer_projects %>
+  <!--renderなしで表示-->
+    <!--<%# @user_backers.each do |backer| %>-->
+    <!--  <%#= backer.project.title %>-->
+    <!--<%# end %>-->
+  <!-- backers/indexへrender-->
+    <!--<%#= render "public/backers/index", user_backers: @user_backers %>-->
 
 <p>参加プロジェクト</p>
+  <%= render "public/users/participant", participant_projects: @participant_projects %>
+
 <p>投稿プロジェクト</p>
+  <%= render "public/users/owner", owner_projects: @owner_projects %>

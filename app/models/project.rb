@@ -11,4 +11,13 @@ class Project < ApplicationRecord
   # enum定義
   enum posting_status: { examination: 0, completed: 1 }
 
+
+  def b_total_amount
+    Backer.all.sum(:support_amount)
+  end
+
+  def p_total_amount
+    Return.p_amount * Participant.approval_status
+  end
+
 end

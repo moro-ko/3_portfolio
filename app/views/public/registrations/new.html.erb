@@ -1,34 +1,37 @@
-<h2>Sign up</h2>
-
-<%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class="container">
+  <div class="row">
+    <h3 class="col-5 text-right p-3"><span class="header">Sign up</span></h3>
   </div>
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :name %></div>
+      <div class="col-5"><%= f.text_field :name %></div>
+    </div>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :email %></div>
+      <div class="col-5"><%= f.email_field :email, autocomplete: "email" %></div>
+    </div>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :password %></div>
+      <div class="col-5"><%= f.password_field :password, autocomplete: "new-password" %></div>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, autocomplete: "email" %>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :password_confirmation %></div>
+      <div class="col-5"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
+    </div>
+
+    <div class="actions row p-2">
+      <div class="col-5"></div>
+      <div class="col-5"><%= f.submit "Sign up" %></div>
+    </div>
+  <% end %>
+
+  <div class="row p-5">
+    <div class="col-4"></div>
+    <div class="col-5">
+      <%= render "public/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>

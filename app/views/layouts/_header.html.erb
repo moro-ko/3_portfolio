@@ -1,19 +1,46 @@
-<% if admin_signed_in? %>
-  <li><%= link_to "掲載済みプロジェクト", admin_projects_path %></li>
-  <li><%= link_to "未掲載プロジェクト", admin_projects_path %></li>
-  <li><%= link_to "ユーザー", admin_users_path %></li>
-  <li><%= link_to "カテゴリ", admin_categories_path %></li>
-  <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-<% elsif user_signed_in? %>
-  <li><%= link_to "プロジェクトをはじめる", new_project_path %></li>
-  <li><%= link_to "プロジェクトをさがす", projects_path %></li>
-  <li><%= link_to "マイページ", users_my_page_path %></li>
-  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-<% else %>
-  <li><%= link_to "プロジェクトをはじめる", new_user_session_path %></li>
-  <li><%= link_to "プロジェクトをさがす", projects_path %></li>
-  <li><%= link_to "ログイン", new_user_session_path %></li>
-  <li><%= link_to "新規登録", new_user_registration_path %></li>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <a class="navbar-brand" href="/">LOGO</a>
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="row">
+    <!-- 検索窓 -->
+      <div id="search-wrap">
+        <form role="search" method="get" action="">
+          <input type="text" value="" name="" id="search-text">
+        </form>
+      </div>
+    </div>
+    <!-- navbar -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if admin_signed_in? %>
+          <li class="nav-item"><%= link_to "　掲載済みプロジェクト", admin_projects_path %></li>
+          <li class="nav-item"><%= link_to "　未掲載プロジェクト", admin_projects_path %></li>
+          <li class="nav-item"><%= link_to "　ユーザー", admin_users_path %></li>
+          <li class="nav-item"><%= link_to "　カテゴリ", admin_categories_path %></li>
+          <li class="nav-item"><%= link_to "　ログアウト", destroy_admin_session_path, method: :delete %></li>
+        <% elsif user_signed_in? %>
+          <li class="nav-item"><%= link_to "　プロジェクトをはじめる", new_project_path %></li>
+          <li class="nav-item"><%= link_to "　プロジェクトをさがす", projects_path %></li>
+          <li class="nav-item"><%= link_to "　マイページ", users_my_page_path %></li>
+          <li class="nav-item"><%= link_to "　ログアウト", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "　プロジェクトをはじめる", new_user_session_path %></li>
+          <li class="nav-item"><%= link_to "　プロジェクトをさがす", projects_path %></li>
+          <li class="nav-item"><%= link_to "　ログイン", new_user_session_path %></li>
+          <li class="nav-item"><%= link_to "　新規登録", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
 
 <!--ようこそ、<%#= current_user.name %>さん！-->
