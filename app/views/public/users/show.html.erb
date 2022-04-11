@@ -1,44 +1,66 @@
-<h4>マイページ</h4>
+<!-- User info -->
+<div class="container p-3">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-5 p-3"><h4 class="header">マイページ</h4></div>
+  </div>
+  <div class="row p-3">
+    <div class="col-4 text-center">
+      <% if current_user.image.attached? %>
+        <%= image_tag current_user.image, size: "100×100" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "100×100" %>
+      <% end %><br>
+      <%= current_user.name %>
+    </div>
+    <div class="col-8">
+      <%= current_user.introduction %>
+      <%= link_to "編集する", edit_user_path(current_user) %>
+    </div>
+  </div>
+</div>
+<!-- ProjectTab info -->
+<div class="container p-3">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/users/my_page">info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/backer">支援プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/participant">参加プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/owner" tabindex="-1" aria-disabled="true">投稿プロジェクト</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="info" class="tab-pane active">
+          <p></p>
+          <p>各種プロジェクト内容の確認</p>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<% if current_user.image.attached? %>
-  <%= image_tag current_user.image, size: "100×100" %>
-<% else %>
-  <%= image_tag 'no_image', size: "100×100" %>
-<% end %>
-<%= current_user.name %>
-<%= current_user.introduction %>
-<br>
-<%= link_to "編集する", edit_user_path(current_user) %>
-
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="/users/backer">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-</ul>
 
 
+<!--メモーーーーー-->
 
-
-<p>支援プロジェクト</p>
+<!--支援プロジェクト-->
   <!--<%#= render "public/users/backer", backer_projects: @backer_projects %>-->
-  <!--renderなしで表示-->
-    <!--<%# @user_backers.each do |backer| %>-->
-    <!--  <%#= backer.project.title %>-->
-    <!--<%# end %>-->
-  <!-- backers/indexへrender-->
-    <!--<%#= render "public/backers/index", user_backers: @user_backers %>-->
-
-<!--<p>参加プロジェクト</p>-->
+    <!--renderなしで表示-->
+      <!--<%# @user_backers.each do |backer| %>-->
+      <!--  <%#= backer.project.title %>-->
+      <!--<%# end %>-->
+    <!-- backers/indexへrender-->
+      <!--<%#= render "public/backers/index", user_backers: @user_backers %>-->
+<!--参加プロジェクト-->
   <!--<%#= render "public/users/participant", participant_projects: @participant_projects %>-->
-
-<!--<p>投稿プロジェクト</p>-->
+<!--投稿プロジェクト-->
   <!--<%#= render "public/users/owner", owner_projects: @owner_projects %>-->

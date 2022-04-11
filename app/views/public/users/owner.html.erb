@@ -1,40 +1,59 @@
-<h4>マイページ</h4>
-
-<% if current_user.image.attached? %>
-  <%= image_tag current_user.image, size: "100×100" %>
-<% else %>
-  <%= image_tag 'no_image', size: "100×100" %>
-<% end %>
-<%= current_user.name %>
-<%= current_user.introduction %>
-<br>
-<%= link_to "編集する", edit_user_path(current_user) %>
-
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link" href="/users/backer">支援プロジェクト</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/users/participant">参加プロジェクト</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="/users/owner">投稿プロジェクト</a>
-  </li>
-</ul>
-<div class="tab-content">
-  <div id="photo1" class="tab-pane active">
-    <% @owner_projects.each do |project| %>
-    <%= link_to project_path(project) do %>
-      <% if project.image.attached? %>
-        <%= image_tag project.image, size: "100×100" %>
+<!-- User info -->
+<div class="container p-3">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-5 p-3"><h4 class="header">マイページ</h4></div>
+  </div>
+  <div class="row p-3">
+    <div class="col-4 text-center">
+      <% if current_user.image.attached? %>
+        <%= image_tag current_user.image, size: "100×100" %>
       <% else %>
         <%= image_tag 'no_image', size: "100×100" %>
-      <% end %>
-      <%= project.title %>
-      <p>現在支援金額</p>
-      <p>支援者数</p>
-      <p>残り</p>
-    <% end %>
-  <% end %>
+      <% end %><br>
+      <%= current_user.name %>
+    </div>
+    <div class="col-8">
+      <%= current_user.introduction %>
+      <%= link_to "編集する", edit_user_path(current_user) %>
+    </div>
+  </div>
+</div>
+<!-- Project Tab -->
+<div class="container p-3">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="/users/my_page">Tab</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/backer">支援プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/participant">参加プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/users/owner">投稿プロジェクト</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="owner" class="tab-pane active">
+          <% @owner_projects.each do |project| %>
+          <%= link_to project_path(project) do %>
+            <% if project.image.attached? %>
+              <%= image_tag project.image, size: "100×100" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "100×100" %>
+            <% end %>
+            <%= project.title %>
+            <p>現在支援金額</p>
+            <p>支援者数</p>
+            <p>残り</p>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
