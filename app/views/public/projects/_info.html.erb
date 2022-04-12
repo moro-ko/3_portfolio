@@ -35,7 +35,9 @@
   <div class="row justify-content-center p-3">
     <div class="col-5"></div>
     <div class="col-5 text-center">
-      <% if project.user_id == current_user.id %>
+      <% if admin_signed_in? %>
+        <%= link_to "プロジェクト内容を確認する", edit_admin_project_path %>
+      <% elsif project.user_id == current_user.id %>
         <%= link_to "プロジェクトを編集する", edit_project_path(project) %>
       <% else %>
         <%= link_to "プロジェクトを支援する", selects_project_returns_path(project) %>

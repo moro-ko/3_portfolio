@@ -5,6 +5,7 @@ class Admin::ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @returnv = Return.find(params[:id])
   end
 
   def edit

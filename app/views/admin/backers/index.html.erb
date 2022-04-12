@@ -1,18 +1,43 @@
-<table>
-  <% @backers.each do |backer| %>
-  <thead>
-    <tr>
-      <th>後援者</th>
-      <th>応援コメント</th>
-      <th>支援金額</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><p>写真</p><%= backer.user.name %></td>
-      <td><%= backer.comment %></td>
-      <td><%= backer.support_amount %>円</td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row p-3">
+    <div class="col-1"></div>
+    <div class="col-5 p-3"><h4>後援者一覧</h4></div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <table class="table table-hover table-inverse admin_users_table">
+        <thead class="thead-gray">
+          <tr>
+            <th>ID</th>
+            <th>ユーザー名</th>
+            <th>応援コメント</th>
+            <th>支援金額</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @backers.each do |backer| %>
+          <tr>
+            <td><%= backer.id %></td>
+            <td>
+              <%= link_to admin_user_path(backer.user) do %>
+                <%= backer.user.name %>
+              <% end %>
+            </td>
+            <td><%= backer.comment %></td>
+            <td><%= backer.support_amount %>円</td>
+            <td>
+              <% if backer.user.is_deleted == false %>
+                有効
+              <% elsif backer.user.is_deleted == true %>
+                退会
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <!--<%#= paginate @users %>-->
+    </div>
+  </div>
+</div>
