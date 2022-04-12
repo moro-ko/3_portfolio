@@ -18,7 +18,7 @@
 //   right:10px;
 }
 /*テキスト入力input設定*/
- #search-text{
+ #keyword{
   -webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
   width: 50px;/*テキスト入力エリアが伸びる前の横幅*/
   height: 50px;
@@ -31,7 +31,7 @@
   cursor: pointer;/*カーソルを指マークに*/
 }
 /*テキスト入力inputにフォーカスした時の形状*/
- #search-text:focus {
+ #keyword:focus {
   width: 200px;/*テキスト入力エリアが伸びる後の横幅*/
   padding: 20px 0 20px 60px;
   box-shadow: 0 2px rgba(6,0,1,.26);
