@@ -42,6 +42,15 @@ class Public::ProjectsController < ApplicationController
     redirect_to edit_project_return_path(project)
   end
 
+  def search
+    if params[:keyword].present?
+      @projects = Project.where('title LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @projects = Project.all
+    end
+  end
+
   private
 
   def project_params

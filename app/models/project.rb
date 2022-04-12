@@ -11,6 +11,11 @@ class Project < ApplicationRecord
   # enum定義
   enum posting_status: { examination: 0, completed: 1 }
 
+  # 検索機能
+  def self.search(keyword)
+    where(["title like? OR content like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
 
   def b_total_amount
     Backer.all.sum(:support_amount)

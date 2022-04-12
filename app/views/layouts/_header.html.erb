@@ -10,11 +10,13 @@
     </button>
     <div class="row">
     <!-- 検索窓 -->
-      <div id="search-wrap">
-        <form role="search" method="get" action="">
-          <input type="text" value="" name="" id="search-text">
-        </form>
-      </div>
+      <%= form_with url: search_projects_path, local: true, method: :get do |f| %>
+        <div id="search-wrap">
+          <!--<input type="search" value="" name="keyword" id="keyword">-->
+          <%= f.text_field :keyword %>
+          <!--<%#= f.submit "検索" %>-->
+        </div>
+      <% end %>
     </div>
     <!-- navbar -->
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
