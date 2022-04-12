@@ -1,24 +1,75 @@
-<table>
-  <% @backers.each do |backer| %>
-  <thead>
-    <tr>
-      <th>後援者</th>
-      <th>応援コメント</th>
-      <% if backer.project.user.id = current_user.id %>
-        <th>支援金額</th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><p>写真</p><%= backer.user.name %></td>
-      <td><%= backer.comment %></td>
-      <td>
-        <% if backer.project.user = current_user %>
-          <%= backer.support_amount %>円
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+<!-- Project info -->
+<%= render "public/projects/info", project: @project %>
+
+<!-- ProjectTab info-->
+<div class="container p-3">
+  <div class="row justify-content-center">
+    <div class="col-7">
+      <!-- nav-tab-->
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/1">ホーム</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/projects/1/backers">支援者</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/projects/1/participants" tabindex="-1" aria-disabled="true">参加者</a>
+        </li>
+      </ul>
+      <!-- tab-content -->
+      <div class="tab-content">
+        <div id="backer" class="tab-pane active">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-10 offset-1">
+                <table class="table table-hover table-inverse admin_users_table">
+                  <% @backers.each do |backer| %>
+                  <thead class="thead-gray">
+                    <tr>
+                      <th>後援者</th>
+                      <th>応援コメント</th>
+                      <% if backer.project.user.id = current_user.id %>
+                        <th>支援金額</th>
+                      <% end %>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><%= backer.user.name %></td>
+                      <td><%= backer.comment %></td>
+                      <td>
+                        <% if backer.project.user = current_user %>
+                          <%= backer.support_amount %>円
+                        <% end %>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <% end %>
+                </table>
+              </div>
+            </div>
+          </div>
+      　</div>
+      </div>
+    </div>
+    <div class="col-4">
+      <!-- ユーザ情報 -->
+      <div class="row justify-content-center">
+        <div class="col-4 text-center">
+          <div class="row justify-content-center">ユーザー情報</div>
+          <% if @project.user.image.attached? %>
+            <%= image_tag @project.user.image, size: "100×100" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "100×100" %>
+          <% end %><br>
+          <%= @project.user.name %>
+        </div>
+      </div>
+      <!-- リターン情報 -->
+      <div class="row justify-content-center">
+        <%= render "public/returns/show", returnv: @returnv %>
+      </div>
+    </div>
+  </div>
+</div>

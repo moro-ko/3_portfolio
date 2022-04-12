@@ -22,8 +22,9 @@ class Public::BackersController < ApplicationController
 
   def index
     # project_idに紐づくbackerデータの取得(.allは必須でない)
-    project = Project.find(params[:project_id])
-    @backers = project.backers.all
+    @project = Project.find(params[:project_id])
+    @backers = @project.backers.all
+    @returnv = @project.return
   end
 
   private

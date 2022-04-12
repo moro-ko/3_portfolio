@@ -19,7 +19,7 @@ class Public::ProjectsController < ApplicationController
     # binding.pry
     @project = Project.find(params[:id])
     @returnv = @project.return
-    # 支援総額表示
+    # 支援総額表示 
     # b_total_amount = Backer.where(:project_id).sum(:support_amount)
     # p_total_amount = ( Participant.approval_status.count.to_i * @returnv.p_amount )
     # @total_amount = (b_total_amount + p_total_amount)

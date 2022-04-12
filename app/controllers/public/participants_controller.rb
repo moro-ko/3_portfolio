@@ -26,6 +26,7 @@ class Public::ParticipantsController < ApplicationController
     # project_idに紐づくparticipantデータの取得(.allは必須でない)
     @project = Project.find(params[:project_id])
     @participants = @project.participants.all
+    @returnv = @project.return
   end
 
   def edit

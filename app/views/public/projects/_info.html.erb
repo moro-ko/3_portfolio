@@ -1,0 +1,46 @@
+<!-- Project info -->
+<div class="container p-3">
+  <!-- head -->
+  <div class="row justify-content-center p-3">
+    <div class="col-10 text-center"><h3><%= project.title %></h3>
+      <div class="row justify-content-center">
+        <div class="col-3"><%= project.user.name %></div>
+        <div class="col-3"><%= project.category.name %></div>
+        <div class="col-3">none</div>
+      </div>
+    </div>
+  </div>
+  <!-- main -->
+  <div class="row justify-content-center p-3">
+    <div class="col-5 text-center"><%= image_tag project.image %></div>
+    <div class="col-5">
+      <div class="row justify-content-center">
+        <!-- 支援総額 -->
+        <p>現在の支援総額</p><%#= total_amount %>円
+      </div>
+      <div class="row justify-content-center">
+        <!-- 支援者数 -->
+        <p>支援者数</p><%#= b_number.count %>人
+      </div>
+      <div class="row justify-content-center">
+        <!-- 参加者数 -->
+        <p>参加者数</p><%#= @p_number.count %>人
+      </div>
+      <div class="row justify-content-center">
+        <!-- 残り日数-->
+        <p>募集終了まで残り</p><p>〇〇日</p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center p-3">
+    <div class="col-5"></div>
+    <div class="col-5 text-center">
+      <% if project.user_id == current_user.id %>
+        <%= link_to "プロジェクトを編集する", edit_project_path(project) %>
+      <% else %>
+        <%= link_to "プロジェクトを支援する", selects_project_returns_path(project) %>
+        <p>♡お気に入り</p>
+      <% end %>
+    </div>
+  </div>
+</div>
