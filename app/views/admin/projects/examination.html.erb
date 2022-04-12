@@ -17,9 +17,9 @@
       <h4 class="header">プロジェクト一覧</h4>
       <div class ="wrapper grid" >
         <% @projects.each do |project| %>
-          <% if project.posting_status == "completed" %>
+          <% if project.posting_status == "examination" %>
             <div class="card text-center" style="width: 14rem;">
-              <%= link_to project_path(project) do %>
+              <%= link_to admin_project_path(project) do %>
                 <div class="card-img-top">
                   <% if project.image.attached? %>
                     <%= image_tag project.image, size: "100×100" %>

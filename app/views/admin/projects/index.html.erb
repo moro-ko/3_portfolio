@@ -1,29 +1,43 @@
-<div>検索枠</div>
-
-<h4>プロジェクト一覧</h4>
-
-<p>掲載済み</p>
-<% @projects.each do |project| %>
-  <% if project.posting_status == "completed" %>
-    <%= link_to admin_project_path(project) do %>
-      <%= image_tag project.image %>
-      <%= project.title %>
-      <p>現在支援金額</p>
-      <p>支援者数</p>
-      <p>残り</p>
-    <% end %>
-  <% end %>
-<% end %>
-
-<p>未掲載</p>
-<% @projects.each do |project| %>
-  <% if project.posting_status == "examination" %>
-    <%= link_to admin_project_path(project) do %>
-      <%= image_tag project.image %>
-      <%= project.title %>
-      <p>現在支援金額</p>
-      <p>支援者数</p>
-      <p>残り</p>
-    <% end %>
-  <% end %>
-<% end %>
+<div class="container p-3">
+  <div class="row justify-content-center">
+    検索枠
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-conte-center">
+    <div class="col-2 p-1">
+      <div class="card-header">カテゴリ一覧</div>
+      <div class="card-body">
+        <% @categories.each do |category| %>
+          <p class="card-text"><%= category.name %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-9 p-4">
+      <h4 class="header">プロジェクト一覧</h4>
+      <div class ="wrapper grid" >
+        <% @projects.each do |project| %>
+          <% if project.posting_status == "completed" %>
+            <div class="card text-center" style="width: 14rem;">
+              <%= link_to admin_project_path(project) do %>
+                <div class="card-img-top">
+                  <% if project.image.attached? %>
+                    <%= image_tag project.image, size: "100×100" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "100×100" %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title text-center"><%= project.title %></h6>
+                </div>
+              <% end %>
+              <div class="card-text">現在支援金額</div>
+              <div class="card-text">支援者数</div>
+              <div class="card-text">残り</div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

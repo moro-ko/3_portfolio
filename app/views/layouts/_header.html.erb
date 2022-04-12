@@ -21,7 +21,7 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if admin_signed_in? %>
           <li class="nav-item"><%= link_to "　掲載済みプロジェクト", admin_projects_path %></li>
-          <li class="nav-item"><%= link_to "　未掲載プロジェクト", admin_projects_path %></li>
+          <li class="nav-item"><%= link_to "　未掲載プロジェクト", examination_admin_projects_path %></li>
           <li class="nav-item"><%= link_to "　ユーザー", admin_users_path %></li>
           <li class="nav-item"><%= link_to "　カテゴリ", admin_categories_path %></li>
           <li class="nav-item"><%= link_to "　ログアウト", destroy_admin_session_path, method: :delete %></li>

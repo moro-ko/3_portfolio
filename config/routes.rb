@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :projects, only: [:index, :show, :edit, :update, :destroy] do
+      collection do
+        # 未掲載プロジェクト一覧
+        get 'examination'
+      end
       resources :backers, only: [:index]
       resources :participants, only: [:index]
     end
