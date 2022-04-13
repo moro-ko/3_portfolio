@@ -17,6 +17,12 @@ class Public::UsersController < ApplicationController
     @owner_projects = Project.where(user_id: user.id).includes(:user)
   end
 
+  def favorite
+    user = current_user
+    favorite = Favorite.where(user_id: user.id).pluck(:project_id)
+    @favorite_projects = Project.find(favorite)
+  end
+
   def edit
     @user = current_user
   end

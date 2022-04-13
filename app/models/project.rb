@@ -16,8 +16,8 @@ class Project < ApplicationRecord
   def self.search(keyword)
     where(["title like? OR content like?", "%#{keyword}%", "%#{keyword}%"])
   end
-  
-  # いいね
+
+  # いいね機能
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end

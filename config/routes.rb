@@ -39,6 +39,7 @@ Rails.application.routes.draw do
         get 'backer'
         get 'participant'
         get 'owner'
+        get 'favorite'
       end
     end
     resources :projects, only: [:new, :create, :index, :show, :edit, :update] do
