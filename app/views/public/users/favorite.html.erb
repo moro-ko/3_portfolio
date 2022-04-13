@@ -26,31 +26,26 @@
       <!-- nav-tab-->
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link" href="/users/my_page">Tab</a>
+          <a class="nav-link" href="/users/my_page">info</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/users/backer">支援プロジェクト</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/users/participant">参加プロジェクト</a>
+          <a class="nav-link" href="/users/participant">参加プロジェクト</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/users/owner">投稿プロジェクト</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users/favorite">お気に入りプロジェクト</a>
+          <a class="nav-link active" aria-current="page" href="/users/favorite">お気に入りプロジェクト</a>
         </li>
       </ul>
       <!-- tab-content -->
       <div class="tab-content p-3">
-        <div id="participant" class="wrapper grid">
-          <% @participant_projects.each do |project| %>
+        <div id="backer" class="wrapper grid">
+          <% @favorite_projects.each do |project| %>
             <div class="card text-center" style="width: 14rem;">
-              <% if project.participants.approval_status == "approval" %>
-                申請中
-              <% else %>
-                参加済み
-              <% end %>
               <%= link_to project_path(project) do %>
                 <% if project.image.attached? %>
                   <%= image_tag project.image, size: "100×100" %>

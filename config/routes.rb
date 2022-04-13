@@ -39,6 +39,7 @@ Rails.application.routes.draw do
         get 'backer'
         get 'participant'
         get 'owner'
+        get 'favorite'
       end
     end
     resources :projects, only: [:new, :create, :index, :show, :edit, :update] do
@@ -62,6 +63,7 @@ Rails.application.routes.draw do
       collection do
         get 'search'
       end
+      resource :favorites, only: [:create, :destroy]
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
