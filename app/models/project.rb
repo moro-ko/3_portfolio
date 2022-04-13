@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   has_one :return
   has_many :backers, dependent: :destroy
   has_many :participants, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :image
 
@@ -14,6 +15,11 @@ class Project < ApplicationRecord
   # 検索機能
   def self.search(keyword)
     where(["title like? OR content like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+  
+  # いいね
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 
