@@ -12,7 +12,7 @@
   <div class="row justify-content-center p-3">
     <div class="col-4">
       <p>ユーザー情報</p>
-      <%= link_to admin_user_path(@project) do %>
+      <%= link_to admin_user_path(@project.user.id) do %>
         <%= @project.user.name %>
       <% end %>
     </div>

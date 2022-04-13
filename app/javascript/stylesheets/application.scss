@@ -1,6 +1,35 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+
+// ----------
+
+// 基本設定
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 30px 0;
+  color: gray;
+  // font-family: Chalkduster;
+}
+
+
+// wrapper grid(card-item)
 .grid {
   display: grid;
   gap: 26px;
@@ -8,6 +37,7 @@
   margin-top: 6%;
   margin-bottom: 50px;
 }
+
 
 // 検索
 /*検索窓のエリア*/
@@ -37,4 +67,6 @@
   box-shadow: 0 2px rgba(6,0,1,.26);
 }
 
+
 // タブメニュー
+
