@@ -16,15 +16,15 @@
     <div class="col-5">
       <div class="row justify-content-center">
         <!-- 支援総額 -->
-        <p>現在の支援総額</p><%#= total_amount %>円
+        <p>現在の支援総額<%= total_amount %>円</p>
       </div>
       <div class="row justify-content-center">
         <!-- 支援者数 -->
-        <p>支援者数</p><%#= b_number.count %>人
+        <p>支援者数<%= backers.count %>人</p>
       </div>
       <div class="row justify-content-center">
         <!-- 参加者数 -->
-        <p>参加者数</p><%#= @p_number.count %>人
+        <p>参加者数<%= participants.count %>人</p>
       </div>
       <div class="row justify-content-center">
         <!-- 残り日数-->

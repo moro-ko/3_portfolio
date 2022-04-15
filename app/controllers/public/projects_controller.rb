@@ -17,19 +17,20 @@ class Public::ProjectsController < ApplicationController
   end
 
   def show
-    # binding.pry
     @project = Project.find(params[:id])
     @returnv = @project.return
     # 支援総額表示
     # b_total_amount = Backer.where(:project_id).sum(:support_amount)
     # p_total_amount = ( Participant.approval_status.count.to_i * @returnv.p_amount )
-    # @total_amount = (b_total_amount + p_total_amount)
     # 支援者数表示(backer,participant ※approval_status:participant.rbに定義)
-    backer = Backer.where(project_id: @project.id).pluck(:id)
-    @b_number = Backer.find(backer)
-    # participant = Participant.where(project_id: @project.id).pluck(:id)
-    # p_number = Participant.approval_status
-    # @p_number = (participant.id && p_number)
+    # @backers = Backer.where(project_id: @project.id)
+    @backers = @project.backers.all
+    # @participants = Participant.where(project_id: @project.id, approval_status: "completed")
+    @participants = @project.participants.where(approval_status: "completed")
+    @total_amount = @backers.sum(:support_amount).to_i + (@project.return.p_amount * @participants.count)
+    @days_left = @project.end_date - Date.today
+    # binding.pry
+
   end
 
   def edit

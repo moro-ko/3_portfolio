@@ -26,6 +26,8 @@ class Public::ParticipantsController < ApplicationController
     # project_idに紐づくparticipantデータの取得(.allは必須でない)
     @project = Project.find(params[:project_id])
     @participants = @project.participants.all
+    @backers = @project.backers.all
+    @total_amount = @backers.sum(:support_amount).to_i + (@project.return.p_amount * @participants.where(approval_status: "completed").count)
     @returnv = @project.return
   end
 
