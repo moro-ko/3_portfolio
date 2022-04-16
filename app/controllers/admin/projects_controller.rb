@@ -11,7 +11,11 @@ class Admin::ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @returnv = Return.find(params[:id])
+    @returnv = @project.return
+    @backers = @project.backers.all
+    @participants = @project.participants.where(approval_status: "completed")
+    @total_amount = @backers.sum(:support_amount).to_i + (@project.return.p_amount * @participants.count)
+    @days_left = @project.end_date - Date.today
   end
 
   def edit

@@ -25,9 +25,10 @@ class Public::ParticipantsController < ApplicationController
   def index
     # project_idに紐づくparticipantデータの取得(.allは必須でない)
     @project = Project.find(params[:project_id])
-    @participants = @project.participants.all
     @backers = @project.backers.all
+    @participants = @project.participants.all
     @total_amount = @backers.sum(:support_amount).to_i + (@project.return.p_amount * @participants.where(approval_status: "completed").count)
+    @days_left = @project.end_date - Date.today
     @returnv = @project.return
   end
 
