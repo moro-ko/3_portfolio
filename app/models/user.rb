@@ -18,4 +18,13 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  # ゲストユーザーをさがす or 作成する
+  def self.guest
+    find_or_create_by!(email: 'guest@example') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guest"
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+    end
+  end
+
 end

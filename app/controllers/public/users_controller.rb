@@ -29,17 +29,25 @@ class Public::UsersController < ApplicationController
 
   def update
     user = current_user
-    user.update(user_params)
-    redirect_to users_my_page_path
+    if user.email == 'guest@example'
+      redirect_to root_path, alert: 'ゲストユーザーは編集できません。'
+    else
+      user.update(user_params)
+      redirect_to users_my_page_path
+    end
   end
 
   def withdraw
     user = current_user
-    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
-    user.update(is_deleted: true)
-    reset_session
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to root_path
+    if user.email == 'guest@example'
+      redirect_to root_path, alert: 'ゲストユーザーは退会できません。'
+    else
+      # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+      user.update(is_deleted: true)
+      reset_session
+      flash[:notice] = "退会処理を実行いたしました"
+      redirect_to root_path
+    end
   end
 
   private
