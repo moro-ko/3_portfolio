@@ -22,21 +22,21 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if admin_signed_in? %>
-          <li class="nav-item"><%= link_to "　掲載済みプロジェクト", admin_projects_path %></li>
-          <li class="nav-item"><%= link_to "　未掲載プロジェクト", examination_admin_projects_path %></li>
-          <li class="nav-item"><%= link_to "　ユーザー", admin_users_path %></li>
-          <li class="nav-item"><%= link_to "　カテゴリ", admin_categories_path %></li>
-          <li class="nav-item"><%= link_to "　ログアウト", destroy_admin_session_path, method: :delete %></li>
+          <li class="nav-item nav-link"><%= link_to "掲載済みプロジェクト", admin_projects_path, class:"link"  %></li>
+          <li class="nav-item nav-link"><%= link_to "未掲載プロジェクト", examination_admin_projects_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "ユーザー", admin_users_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "カテゴリ", admin_categories_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"link" %></li>
         <% elsif user_signed_in? %>
-          <li class="nav-item"><%= link_to "　プロジェクトをはじめる", new_project_path %></li>
-          <li class="nav-item"><%= link_to "　プロジェクトをさがす", projects_path %></li>
-          <li class="nav-item"><%= link_to "　マイページ", users_my_page_path %></li>
-          <li class="nav-item"><%= link_to "　ログアウト", destroy_user_session_path, method: :delete %></li>
+          <li class="nav-item nav-link"><%= link_to "プロジェクトをはじめる", new_project_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "プロジェクトをさがす", projects_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "マイページ", users_my_page_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"link" %></li>
         <% else %>
-          <li class="nav-item"><%= link_to "　プロジェクトをはじめる", new_user_session_path %></li>
-          <li class="nav-item"><%= link_to "　プロジェクトをさがす", projects_path %></li>
-          <li class="nav-item"><%= link_to "　ログイン", new_user_session_path %></li>
-          <li class="nav-item"><%= link_to "　新規登録", new_user_registration_path %></li>
+          <li class="nav-item nav-link"><%= link_to "プロジェクトをはじめる", new_user_session_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "プロジェクトをさがす", projects_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "ログイン", new_user_session_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "新規登録", new_user_registration_path, class:"link" %></li>
         <% end %>
       </ul>
     </div>

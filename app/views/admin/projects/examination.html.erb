@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="col-9 p-4">
-      <h4 class="header">プロジェクト一覧</h4>
+      <h4 class="header">プロジェクト一覧(未掲載)</h4>
       <div class ="wrapper grid" >
         <% @projects.each do |project| %>
           <% if project.posting_status == "examination" %>
@@ -37,6 +37,9 @@
             </div>
           <% end %>
         <% end %>
+      </div>
+      <div class="row justify-content-center p-4">
+        <%= paginate @projects %>
       </div>
     </div>
   </div>
