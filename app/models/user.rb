@@ -12,6 +12,10 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
+  # バリデーション
+  validates :name, presence: true
+  validates :email, presence: true
+
   # ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約をかける
   # is_deletedがfalseならtrueを返す
   def active_for_authentication?

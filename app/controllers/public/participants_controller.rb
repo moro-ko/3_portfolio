@@ -12,11 +12,14 @@ class Public::ParticipantsController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    participant = Participant.new(participant_params)
-    participant.user_id = current_user.id
-    participant.project_id = @project.id
-    participant.save
-    redirect_to complete_project_participants_path
+    @participant = Participant.new(participant_params)
+    @participant.user_id = current_user.id
+    @participant.project_id = @project.id
+    if @participant.save
+      redirect_to complete_project_participants_path
+    else
+      render :new
+    end
   end
 
   def complete

@@ -28,19 +28,25 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    user = current_user
-    if user.email == 'guest@example'
-      redirect_to root_path, alert: 'ゲストユーザーは編集できません。'
+    @user = current_user
+    if @user.email == 'guest@example'
+      flash[:alert] = "ゲストユーザは編集できません"
+      redirect_to root_path
     else
-      user.update(user_params)
-      redirect_to users_my_page_path
+      if @user.update(user_params)
+        flash[:notice] = "ユーザ情報を更新しました"
+        redirect_to users_my_page_path
+      else
+        render :edit
+      end
     end
   end
 
   def withdraw
     user = current_user
     if user.email == 'guest@example'
-      redirect_to root_path, alert: 'ゲストユーザーは退会できません。'
+      flash[:alert] = "ゲストユーザは退会できません"
+      redirect_to root_path
     else
       # is_deletedカラムをtrueに変更することにより削除フラグを立てる
       user.update(is_deleted: true)

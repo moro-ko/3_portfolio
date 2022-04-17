@@ -6,10 +6,14 @@ class Public::ReturnsController < ApplicationController
   def create
     # binding.pry
     project = Project.find(params[:project_id])
-    returnv = Return.new(returnv_params)
-    returnv.project_id = project.id
-    returnv.save
-    redirect_to projects_path
+    @returnv = Return.new(returnv_params)
+    @returnv.project_id = project.id
+    if @returnv.save
+      flash[:notice] = "プロジェクトが作成されました"
+      redirect_to project_path(@returnv)
+    else
+      render :new
+    end
     # returnv = Return.new(returnv_params)
     # returnv.save
     # returnv.project_id = returnv.id
@@ -31,9 +35,13 @@ class Public::ReturnsController < ApplicationController
   end
 
   def update
-    returnv = Return.find(params[:id])
-    returnv.update(returnv_params)
-    redirect_to projects_path
+    @returnv = Return.find(params[:id])
+    if @returnv.update(returnv_params)
+      flash[:notice] = "プロジェクト内容が変更されました"
+      redirect_to project_path(@returnv)
+    else
+      render :edit
+    end
   end
 
   def selects

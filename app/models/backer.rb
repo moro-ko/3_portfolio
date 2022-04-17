@@ -3,9 +3,8 @@ class Backer < ApplicationRecord
   belongs_to :user
   belongs_to :project
 
-
-  def b_total_amount
-    Backer.all.sum(:support_amount)
-  end
+  # バリデーション
+  validates :support_amount, presence: true
+  validates :comment, presence: true
 
 end

@@ -10,11 +10,14 @@ class Public::BackersController < ApplicationController
 
   def create
     project = Project.find(params[:project_id])
-    backer = Backer.new(backer_params)
-    backer.user_id = current_user.id
-    backer.project_id = project.id
-    backer.save
-    redirect_to complete_project_backers_path
+    @backer = Backer.new(backer_params)
+    @backer.user_id = current_user.id
+    @backer.project_id = project.id
+    if @backer.save
+      redirect_to complete_project_backers_path
+    else
+      render :new
+    end
   end
 
   def complete

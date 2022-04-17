@@ -5,14 +5,17 @@ class Public::ProjectsController < ApplicationController
 
   def create
     # binding.pry
-    project = Project.new(project_params)
-    project.user_id = current_user.id
-    project.save
-    redirect_to new_project_return_path(project)
+    @project = Project.new(project_params)
+    @project.user_id = current_user.id
+    if @project.save
+      redirect_to new_project_return_path(project)
+    else
+      render :new
+    end
   end
 
   def index
-    @projects = Project.all
+    @projects = Project.page(params[:page]).per(4)
     @categories = Category.all
   end
 
@@ -38,9 +41,12 @@ class Public::ProjectsController < ApplicationController
   end
 
   def update
-    project = Project.find(params[:id])
-    project.update(project_params)
-    redirect_to edit_project_return_path(project)
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      redirect_to edit_project_return_path(@project)
+    else
+      render :edit
+    end
   end
 
   def search

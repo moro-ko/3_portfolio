@@ -22,13 +22,11 @@ class Project < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-
-  def b_total_amount
-    Backer.all.sum(:support_amount)
-  end
-
-  def p_total_amount
-    Return.p_amount * Participant.approval_status
-  end
+  # バリデーション
+  validates :target_amount, presence: true
+  validates :end_date, presence: true
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :image, presence: true
 
 end
