@@ -36,12 +36,24 @@
     <div class="col-5"></div>
     <div class="col-5 text-center">
       <% if admin_signed_in? %>
-        <%= link_to "プロジェクト内容を確認する", edit_admin_project_path %>
+        <%= link_to "プロジェクト内容を確認する", edit_admin_project_path, class: 'btn btn-ex' %>
       <% elsif project.user_id == current_user.id %>
-        <%= link_to "プロジェクトを編集する", edit_project_path(project) %>
+        <%= link_to "プロジェクトを編集する", edit_project_path(project), class: 'btn btn-ex' %>
       <% else %>
-        <%= link_to "プロジェクトを支援する", selects_project_returns_path(project) %>
-        <p>♡お気に入り</p>
+        <%= link_to "プロジェクトを支援する", selects_project_returns_path(project), class: 'btn btn-ex' %>
+        <% if project.favorited_by?(current_user) %>
+          <p>
+            <%= link_to project_favorites_path(project), method: :delete, class: 'btn btn-ex' do %>
+              　 ♥　お気に入り　( <%= project.favorites.count %> )
+            <% end %>
+          </p>
+          <% else %>
+          <p>
+            <%= link_to project_favorites_path(project), method: :post, class: 'btn btn-ex' do %>
+              　 ♡　お気に入り　( <%= project.favorites.count %> )
+            <% end %>
+          </p>
+        <% end %>
       <% end %>
     </div>
   </div>

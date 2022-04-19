@@ -42,7 +42,7 @@
                           <tr>
                             <td><%= participant.user.name %></td>
                             <td><%= participant.comment %></td>
-                            <td><%= link_to "内容を確認する", edit_project_participant_path(@project,participant) %></td>
+                            <td><%= link_to "内容を確認する", edit_project_participant_path(@project,participant), class: 'btn btn-ex' %></td>
                           </tr>
                         </tbody>
                       <% end %>
@@ -63,7 +63,7 @@
                           <tr>
                             <td><%= participant.user.name %></td>
                             <td><%= participant.comment %></td>
-                            <td><%= link_to "内容を確認する", edit_project_participant_path(@project, participant) %></td>
+                            <td><%= link_to "内容を確認する", edit_project_participant_path(@project, participant), class: 'btn btn-ex' %></td>
                           </tr>
                         </tbody>
                       <% end %>

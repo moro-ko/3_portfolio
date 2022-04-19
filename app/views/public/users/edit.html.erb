@@ -23,11 +23,11 @@
       <div class="col-5"><%= f.file_field :image, accept: "image/*" %></div>
     </div>
 
-    <div class="field row p-3">
-      <div class="col-5 text-right"><%= f.submit '保存する' %></div>
-      <div class="col-1"></div>
+    <div class="field row p-5">
+      <div class="col-6 text-right"><%= f.submit '保存する', class: 'btn btn-ex ml-5' %></div>
+
       <div class="col-5">
-        <%= link_to "退会する" , unsubscribe_users_path %>
+        <%= link_to "退会する" , unsubscribe_users_path, class: 'btn btn-ex ml-5' %>
       </div>
     </div>
   <% end %>

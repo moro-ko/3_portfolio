@@ -38,20 +38,21 @@
     <div class="col-5"></div>
     <div class="col-5 text-center">
       <% if @project.user == current_user %>
-        <%= link_to "プロジェクトを編集する", edit_project_path %>
+        <%= link_to "プロジェクトを編集する", edit_project_path, class: 'btn btn-ex' %>
       <% else %>
-        <%= link_to "プロジェクトを支援する", selects_project_returns_path(@project) %>
+        <%= link_to "プロジェクトを支援する", selects_project_returns_path(@project), class: 'btn btn-ex' %>
+        <br>
         <!-- いいね機能 -->
         <% if @project.favorited_by?(current_user) %>
           <p>
-            <%= link_to project_favorites_path(@project), method: :delete do %>
-              ♥ お気に入り( <%= @project.favorites.count %> )
+            <%= link_to project_favorites_path(@project), method: :delete, class: 'btn btn-ex' do %>
+              　 ♥　お気に入り　( <%= @project.favorites.count %> )
             <% end %>
           </p>
           <% else %>
           <p>
-            <%= link_to project_favorites_path(@project), method: :post do %>
-              ♡ お気に入り( <%= @project.favorites.count %> )
+            <%= link_to project_favorites_path(@project), method: :post, class: 'btn btn-ex' do %>
+              　 ♡　お気に入り　( <%= @project.favorites.count %> )
             <% end %>
           </p>
         <% end %>
