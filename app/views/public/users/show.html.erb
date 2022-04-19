@@ -1,7 +1,9 @@
-<!-- flash メッセージ -->
-<p><%= flash[:notice] %><%= flash[:alert] %></p>
 <!-- User info -->
 <div class="container p-3">
+  <!--flash メッセージ -->
+  <div class="row justify-content-center">
+    <p><%= flash[:notice] %><%= flash[:alert] %></p>
+  </div>
   <div class="row">
     <div class="col-1"></div>
     <div class="col-5 p-3"><h4 class="header">マイページ</h4></div>
