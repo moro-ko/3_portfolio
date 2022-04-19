@@ -17,6 +17,12 @@ class Public::ProjectsController < ApplicationController
   def index
     @projects = Project.page(params[:page]).per(4)
     @categories = Category.all
+    if params[:id]
+      @category = Category.find(params[:id])
+      @projects = @category.projects.page(params[:page])
+    else
+      @projects = Project.page(params[:page])
+    end
   end
 
   def show

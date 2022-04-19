@@ -5,12 +5,16 @@
 </div>
 <div class="container">
   <div class="row justify-conte-center">
-    <div class="col-2 p-1">
-      <div class="card-header">カテゴリ一覧</div>
+    <div class="col-3 p-1">
+      <div class="card-header text-center">カテゴリ検索</div>
       <div class="card-body">
-        <% @categories.each do |category| %>
-          <p class="card-text"><%= category.name %></p>
-        <% end %>
+        <div class="card-text">
+          <% @categories.each do |category| %>
+            <%= link_to projects_path(id: category.id), class: "link" do %>
+              <p class="item p-0.5">＊<%= category.name %></p>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-9 p-4">
