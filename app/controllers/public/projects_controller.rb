@@ -21,7 +21,7 @@ class Public::ProjectsController < ApplicationController
       @category = Category.find(params[:id])
       @projects = @category.projects.page(params[:page])
     else
-      @projects = Project.page(params[:page])
+      @projects = Project.page(params[:page]).per(4)
     end
   end
 
