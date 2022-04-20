@@ -99,9 +99,9 @@
         <div class="col-4 text-center">
           <div class="row justify-content-center">ユーザー情報</div>
           <% if @project.user.image.attached? %>
-            <%= image_tag @project.user.image, size: "100×100" %>
+            <%= image_tag @project.user.image, size: "100×100", class: "icon" %>
           <% else %>
-            <%= image_tag 'no_image', size: "100×100" %>
+            <%= image_tag 'no_image', size: "100×100", class: "icon" %>
           <% end %><br>
           <%= @project.user.name %>
         </div>

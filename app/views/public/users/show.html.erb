@@ -10,16 +10,22 @@
   </div>
   <div class="row p-3">
     <div class="col-4 text-center">
-      <% if current_user.image.attached? %>
-        <%= image_tag current_user.image, size: "100×100" %>
+      <% if current_user.name == "guest" %>
+        <%= image_tag "guest_image", size: "100x100", class: "icon" %>
       <% else %>
-        <%= image_tag 'no_image.jpeg', size: "100×100" %>
-      <% end %><br>
+        <% if current_user.image.attached? %>
+          <%= image_tag current_user.image, size: "100x100", class: "icon" %>
+        <% else %>
+          <%= image_tag 'no_image.jpeg', size: "100x100" %>
+        <% end %>
+      <% end %>
+      <br>
       <%= current_user.name %>
     </div>
     <div class="col-8">
-      <%= current_user.introduction %>
-      <%= link_to "編集する", edit_user_path(current_user), class: 'btn btn-ex ml-5' %>
+      <%= current_user.introduction %><br>
+      <br>
+      <%= link_to "編集する", edit_user_path(current_user), class: 'btn btn-ex' %>
     </div>
   </div>
 </div>
