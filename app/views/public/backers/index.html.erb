@@ -31,7 +31,7 @@
                     <tr>
                       <th>後援者</th>
                       <th>応援コメント</th>
-                      <% if user_signed_in? && @project.user.id = current_user.id %>
+                      <% if user_signed_in? && @project.user.id == current_user.id %>
                         <th>支援金額</th>
                       <% end %>
                     </tr>
@@ -42,7 +42,7 @@
                         <td><%= backer.user.name %></td>
                         <td><%= backer.comment %></td>
                         <td>
-                          <% if backer.project.user = current_user %>
+                          <% if backer.project.user == current_user %>
                             <%= backer.support_amount %>円
                           <% end %>
                         </td>
