@@ -9,8 +9,9 @@ class Public::ReturnsController < ApplicationController
     @returnv = Return.new(returnv_params)
     @returnv.project_id = project.id
     if @returnv.save
-      flash[:notice] = "プロジェクトが作成されました"
-      redirect_to project_path(@returnv)
+      flash[:notice] = "プロジェクト内容を申請しました。"
+      # redirect_to project_path(@returnv)
+      redirect_to owner_users_path(current_user)
     else
       render :new
     end

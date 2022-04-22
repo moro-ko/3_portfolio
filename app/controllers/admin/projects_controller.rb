@@ -1,11 +1,11 @@
 class Admin::ProjectsController < ApplicationController
   def index
-    @projects = Project.all.page(params[:page]).per(4)
+    @projects = Project.where(posting_status: "completed").page(params[:page]).per(4)
     @categories = Category.all
   end
 
   def examination
-    @projects = Project.all.page(params[:page]).per(4)
+    @projects = Project.where(posting_status: "examination").page(params[:page]).per(4)
     @categories = Category.all
   end
 

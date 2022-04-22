@@ -8,8 +8,8 @@ class Public::UsersController < ApplicationController
 
   def participant
     user = current_user
-    participant = Participant.where(user_id: user.id).pluck(:project_id)
-    @participant_projects = Project.find(participant)
+    participants = Participant.where(user_id: user.id).pluck(:project_id)
+    @participant_projects = Project.find(participants)
   end
 
   def owner

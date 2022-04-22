@@ -50,11 +50,11 @@
         <div id="participant" class="wrapper grid">
           <% @participant_projects.each do |project| %>
             <div class="card text-center" style="width: 14rem;">
-              <% if project.participants.approval_status == "approval" %>
-                申請中
-              <% else %>
-                参加済み
-              <% end %>
+              <!--<#% if @participant.approval_status == "approval" %>-->
+              <!--  申請中-->
+              <!--<#% else %>-->
+              <!--  参加済み-->
+              <!--<#% end %>-->
               <%= link_to project_path(project) do %>
                 <% if project.image.attached? %>
                   <%= image_tag project.image, size: "100×100" %>

@@ -8,7 +8,7 @@ class Public::ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     if @project.save
-      redirect_to new_project_return_path(project)
+      redirect_to new_project_return_path(@project)
     else
       render :new
     end

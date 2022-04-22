@@ -14,7 +14,15 @@
       <%= @user.name %>
     </div>
     <div class="col-8">
-      <%= @user.introduction %>
+      <%= @user.introduction %><br>
+      <br>
+      <p>会員ステータス：
+        <% if @user.is_deleted == false %>
+          有効
+        <% elsif @user.is_deleted == true %>
+          退会
+        <% end %>
+      </p>
       <%= link_to "編集する", edit_admin_user_path(@user), class: 'btn btn-ex' %>
     </div>
   </div>
