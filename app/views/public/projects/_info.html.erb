@@ -1,5 +1,12 @@
+<!--使用箇所-->
+  <!--[project/show] [backer/index] [participant/index]-->
+
 <!-- Project info -->
 <div class="container p-3">
+  <!--flash メッセージ -->
+  <div class="row justify-content-center">
+    <p><%= flash[:notice] %><%= flash[:alert] %></p>
+  </div>
   <!-- head -->
   <div class="row justify-content-center p-3">
     <div class="col-10 text-center"><h3><%= project.title %></h3>
