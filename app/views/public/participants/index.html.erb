@@ -26,30 +26,32 @@
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-10 offset-1">
-
-                <!-- owner -->
                 <% if user_signed_in? && @project.user_id == current_user.id %>
                   <p>承認済みユーザ一覧</p>
-                  <table class="table table-hover table-inverse admin_users_table">
-                    <thead class="thead-gray">
-                      <tr>
-                        <th>参加者</th>
-                        <th>応援コメント</th>
-                        <th> </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <% @participants.each do |participant| %>
-                        <% if participant.approval_status == "completed" %>
-                          <tr>
-                            <td><%= participant.user.name %></td>
-                            <td><%= participant.comment %></td>
+                <% end %>
+                <table class="table table-hover table-inverse admin_users_table">
+                  <thead class="thead-gray">
+                    <tr>
+                      <th>参加者</th>
+                      <th>応援コメント</th>
+                      <th> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @participant_all.each do |participant| %>
+                      <% if participant.approval_status == "completed" %>
+                        <tr>
+                          <td><%= participant.user.name %></td>
+                          <td><%= participant.comment %></td>
+                          <% if user_signed_in? && @project.user_id == current_user.id %>
                             <td><%= link_to "内容を確認する", edit_project_participant_path(@project,participant), class: 'btn btn-ex' %></td>
-                          </tr>
-                        <% end %>
+                          <% end %>
+                        </tr>
                       <% end %>
-                    </tbody>
-                  </table>
+                    <% end %>
+                  </tbody>
+                </table>
+                <% if user_signed_in? && @project.user_id == current_user.id %>
                   <p>承認前ユーザ一覧</p>
                   <table class="table table-hover table-inverse admin_users_table">
                     <thead>
@@ -60,33 +62,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <% @participants.each do |participant| %>
+                      <% @participant_all.each do |participant| %>
                         <% if participant.approval_status == "approval" %>
                           <tr>
                             <td><%= participant.user.name %></td>
                             <td><%= participant.comment %></td>
                             <td><%= link_to "内容を確認する", edit_project_participant_path(@project, participant), class: 'btn btn-ex' %></td>
-                          </tr>
-                        <% end %>
-                      <% end %>
-                    </tbody>
-                  </table>
-
-                <!-- not owner -->
-                <% else %>
-                  <table class="table table-hover table-inverse admin_users_table">
-                    <thead>
-                      <tr>
-                        <th>参加者</th>
-                        <th>応援コメント</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <% @participants.each do |participant| %>
-                        <% if participant.approval_status == "completed" %>
-                          <tr>
-                            <td><%= participant.user.name %></td>
-                            <td><%= participant.comment %></td>
                           </tr>
                         <% end %>
                       <% end %>
@@ -99,7 +80,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-4">
       <!-- ユーザ情報 -->
       <div class="row justify-content-center">
