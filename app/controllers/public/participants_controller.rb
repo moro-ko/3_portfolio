@@ -31,6 +31,7 @@ class Public::ParticipantsController < ApplicationController
     @backers = @project.backers.all
     @participants = @project.participants.all
     @total_amount = @backers.sum(:support_amount).to_i + (@project.return.p_amount * @participants.where(approval_status: "completed").count)
+    @achievement_rate = @total_amount.quo(@project.target_amount).to_f * 100
     @days_left = @project.end_date - Date.today
     @returnv = @project.return
   end
