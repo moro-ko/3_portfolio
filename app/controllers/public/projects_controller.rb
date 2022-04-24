@@ -15,13 +15,14 @@ class Public::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.page(params[:page]).per(4)
+    # @projects = Project.where(posting_status: "completed").page(params[:page]).per(4)
     @categories = Category.all
     if params[:id]
       @category = Category.find(params[:id])
-      @projects = @category.projects.page(params[:page])
+      @projects = @category.projects.where(posting_status: "completed").page(params[:page]).per(4)
     else
-      @projects = Project.page(params[:page]).per(4)
+      @projects = Project.where(posting_status: "completed").page(params[:page]).per(4)
+
     end
   end
 

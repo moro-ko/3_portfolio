@@ -48,7 +48,17 @@
         <% if project.user_id == current_user.id %>
           <%= link_to "プロジェクトを編集する", edit_project_path(project), class: 'btn btn-ex' %>
         <% else %>
-          <%= link_to "プロジェクトを支援する", selects_project_returns_path(project), class: 'btn btn-ex' %>
+        <!--支援機能-->
+          <% if project.backed_by?(current_user) %>
+            <p class="btn btn-ex">　支援済みプロジェクト</p>
+          <% elsif project.parted_by?(current_user) %>
+            <p class="btn btn-ex">　参加済みプロジェクト</p>
+          <% elsif project.parting_by?(current_user) %>
+            <p class="btn btn-ex">参加申請中プロジェクト</p>
+          <% else %>
+            <p><%= link_to "プロジェクトを支援する", selects_project_returns_path(project), class: 'btn btn-ex' %></p>
+          <% end %>
+        <!--いいね機能-->
           <% if project.favorited_by?(current_user) %>
             <p>
               <%= link_to project_favorites_path(project), method: :delete, class: 'btn btn-ex' do %>

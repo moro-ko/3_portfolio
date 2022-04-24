@@ -22,6 +22,20 @@ class Project < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  # 支援機能
+    # 後援者
+  def backed_by?(user)
+    backers.exists?(user_id: user.id)
+  end
+    # 参加者（参加済み）
+  def parted_by?(user)
+    participants.where(approval_status: "completed").exists?(user_id: user.id)
+  end
+    # 参加者（申請中）
+  def parting_by?(user)
+    participants.where(approval_status: "approval").exists?(user_id: user.id)
+  end
+
   # バリデーション
   validates :target_amount, presence: true
   validates :end_date, presence: true

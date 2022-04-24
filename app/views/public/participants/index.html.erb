@@ -85,11 +85,16 @@
       <div class="row justify-content-center">
         <div class="col-4 text-center">
           <div class="row justify-content-center">ユーザー情報</div>
-          <% if @project.user.image.attached? %>
-            <%= image_tag @project.user.image, size: "100×100" %>
+          <% if @project.user.name == "guest" %>
+            <%= image_tag "guest_image", size: "100x100", class: "icon" %>
           <% else %>
-            <%= image_tag 'no_image', size: "100×100" %>
-          <% end %><br>
+            <% if @project.user.image.attached? %>
+              <%= image_tag @project.user.image, size: "100x100", class: "icon" %>
+            <% else %>
+              <%= image_tag 'no_image.jpeg', size: "100x100", class: "icon" %>
+            <% end %>
+          <% end %>
+          <br>
           <%= @project.user.name %>
         </div>
       </div>
