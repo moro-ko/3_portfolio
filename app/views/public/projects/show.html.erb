@@ -33,6 +33,7 @@
       <!-- ユーザ情報 -->
       <div class="row justify-content-center">
         <div class="col-4 text-center">
+          <div class="row justify-content-center">ユーザー情報</div>
           <% if @project.user.name == "guest" %>
             <%= image_tag "guest_image", size: "100x100", class: "icon" %>
           <% else %>
