@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2022_04_13_002149) do
     t.date "end_date", null: false
     t.string "title", null: false
     t.text "content", null: false
+    t.integer "area", default: 0, null: false
     t.integer "posting_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
