@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'groups/new'
+    get 'groups/show'
+    get 'groups/edit'
+  end
 # devise
   # 管理者用(URL /admin/sign_in ...)
   devise_for :admin, controllers: {
@@ -62,6 +67,11 @@ Rails.application.routes.draw do
         collection do
           post 'log'
           get 'complete'
+        end
+      end
+      resources :groups, only: [:new, :create, :show, :edit, :update] do
+        collection do
+          get 'info'
         end
       end
       collection do
