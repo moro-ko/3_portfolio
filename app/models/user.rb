@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :backers, dependent: :destroy
   has_many :participants, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :groups, dependent: :destroy
 
   has_one_attached :image
 

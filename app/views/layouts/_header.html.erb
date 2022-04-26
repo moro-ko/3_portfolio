@@ -42,6 +42,11 @@
         <% end %>
       </ul>
     </div>
+    <div class="login">
+      <% if user_signed_in? %>
+        <%= current_user.name %>
+      <% end %>
+    </div>
   </div>
 </nav>
 

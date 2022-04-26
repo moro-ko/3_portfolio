@@ -32,6 +32,7 @@ class Public::BackersController < ApplicationController
     @achievement_rate = @total_amount.quo(@project.target_amount).to_f * 100
     @days_left = @project.end_date - Date.today
     @returnv = @project.return
+    @group = @project.group
   end
 
   private

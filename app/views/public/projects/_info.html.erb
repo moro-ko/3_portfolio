@@ -46,13 +46,18 @@
         <%= link_to "プロジェクト内容を確認する", edit_admin_project_path, class: 'btn btn-ex' %>
       <% elsif user_signed_in? %>
         <% if project.user_id == current_user.id %>
-          <%= link_to "プロジェクトを編集する", edit_project_path(project), class: 'btn btn-ex' %>
+          <p><%= link_to "プロジェクトを編集する", edit_project_path(project), class: 'btn btn-ex' %></p>
+          <p><%= link_to "　オーナー専用ページ　", info_project_groups_path(project), class: 'btn btn-ex' %></p>
         <% else %>
         <!--支援機能-->
           <% if project.backed_by?(current_user) %>
             <p class="btn btn-ex">　支援済みプロジェクト</p>
           <% elsif project.parted_by?(current_user) %>
-            <p class="btn btn-ex">　参加済みプロジェクト</p>
+            <% if project.group.present? %>
+              <p><%= link_to "　参加済みプロジェクト", project_group_path(project, group), class: 'btn btn-ex' %></p>
+            <% else %>
+              <p class="btn btn-ex">　参加済みプロジェクト</p>
+            <% end %>
           <% elsif project.parting_by?(current_user) %>
             <p class="btn btn-ex">参加申請中プロジェクト</p>
           <% else %>

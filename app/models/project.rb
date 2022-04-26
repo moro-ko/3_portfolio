@@ -6,6 +6,7 @@ class Project < ApplicationRecord
   has_many :backers, dependent: :destroy
   has_many :participants, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_one :group
 
   has_one_attached :image
 
