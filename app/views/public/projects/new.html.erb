@@ -35,6 +35,10 @@
       <div class="col-5 text-right"><%= f.label :カテゴリ %></div>
       <div class="col-5"><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %></div>
     </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :地域 %></div>
+      <div class="col-5"><%= f.select :area, Project.areas.keys, {} %></div>
+    </div>
 
     <div class="row">
       <div class="col-3"></div>

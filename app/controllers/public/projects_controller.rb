@@ -69,7 +69,7 @@ class Public::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:target_amount, :end_date, :title, :content, :category_id, :image)
+    params.require(:project).permit(:target_amount, :end_date, :title, :content, :category_id, :area, :image)
   end
 
 end
