@@ -7,9 +7,9 @@ class Participant < ApplicationRecord
   enum approval_status: { approval: 0, completed: 1 }
 
   # バリデーション
-  validates :reason, presence: true
-  validates :contact_address, presence: true
-  validates :comment, presence: true
+  validates :reason, presence: true, length: { minimum: 1, maximum: 200 }
+  validates :contact_address, presence: true, length: { minimum: 1, maximum: 20 }
+  validates :comment, presence: true, length: { minimum: 1, maximum: 50 }
 
   # 参加済みID取得(承認ステータスが承認済み)
   # Participant.approval_status(.count)で取得可

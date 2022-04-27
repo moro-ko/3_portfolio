@@ -6,7 +6,7 @@ class Group < ApplicationRecord
   has_one_attached :image
 
   # バリデーション
-  validates :name, presence: true
-  validates :message, presence: true
+  validates :name, presence: true, length: { minimum: 1, maximum: 20 }
+  validates :message, presence: true, length: { minimum: 1, maximum: 200 }
 
 end

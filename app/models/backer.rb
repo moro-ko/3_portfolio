@@ -5,6 +5,6 @@ class Backer < ApplicationRecord
 
   # バリデーション
   validates :support_amount, presence: true
-  validates :comment, presence: true
+  validates :comment, presence: true, length: { minimum: 1, maximum: 50 }
 
 end

@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_one_attached :image
 
   # バリデーション
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 2, maximum: 1 }
   validates :email, presence: true
 
   # ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約をかける

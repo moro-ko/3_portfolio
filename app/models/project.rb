@@ -52,8 +52,8 @@ class Project < ApplicationRecord
   # バリデーション
   validates :target_amount, presence: true
   validates :end_date, presence: true
-  validates :title, presence: true
-  validates :content, presence: true
+  validates :title, presence: true, length: { minimum: 1, maximum: 20 }
+  validates :content, presence: true, length: { minimum: 1, maximum: 200 }
   validates :area, presence: true
   validates :image, presence: true
 
