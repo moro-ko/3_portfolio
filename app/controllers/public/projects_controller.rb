@@ -22,7 +22,6 @@ class Public::ProjectsController < ApplicationController
       @projects = @category.projects.where(posting_status: "completed").page(params[:page]).per(4)
     else
       @projects = Project.where(posting_status: "completed").page(params[:page]).per(4)
-
     end
   end
 
