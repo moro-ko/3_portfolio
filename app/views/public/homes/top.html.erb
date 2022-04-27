@@ -14,13 +14,16 @@
   <div class="toppage">
     <div class="item box1"><%= image_tag "top_image", width: "100%", height: "100%" %></div>
     <div class="item box">
-      <div class="welcome col-8"><h3>　〇 of 〇〇</h3></div>
-      <div class="welcome col-12">everyone/thing is part of something.</div><br>
-      <!--<div class="welcome col-12">　　　something i know.</div><br>-->
-      <div class="welcome col-8 text-right"><%= link_to "about us" ,about_path, class:"link" %></div>
-      <!--<div class="col-5 text-center">-->
-      <!--  <%#= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"link" %>-->
-      <!--</div>-->
+      <div class="welcome col-8"><h4>　x of --</h4></div>
+      <div class="welcome col-12 pt-3">
+        　I am i, you are you, it is it.<br>
+        each is difference, so there is a uniqueness.<br>
+        <!--and also they gather into one form.-->
+        　and also <br>
+        　　　they are gathered to form a shape.<br>
+        everything is part of something.
+      </div><br><br>
+      <div class="welcome col-8 text-center"><%= link_to "about us" ,about_path, class:"link" %></div>
     </div>
     <div class="item box2"></div>
     <div class="item box3"><%= image_tag "of_image", width: "100%", height: "100%" %></div>
@@ -31,10 +34,13 @@
     <div class="item"><%= image_tag "sub5_image", width: "100%", height: "100%" %></div>
     <div class="item box5"><%= image_tag "sub6_image", width: "100%", height: "100%" %></div>
     <div class="item box6">
-      <div class="welcome col-8 text-center">
-        <%= link_to 'guest?', users_guest_sign_in_path, method: :post, class:"link" %>
-        　or　
-        <%= link_to 'add user?', new_user_registration_path, class:"link" %>
+      <div class="welcome col-12 pt-3 text-right">
+        <font size="2">
+          <%= link_to "shape your xx" , new_user_registration_path, class:"link" %>
+        </font>
+      <!--  <%#= link_to 'guest?', users_guest_sign_in_path, method: :post, class:"link" %>-->
+      <!--  　or-->
+      <!--  <%#= link_to 'add user?', new_user_registration_path, class:"link" %>-->
       </div>
     </div>
   </div>
