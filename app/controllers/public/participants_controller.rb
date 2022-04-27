@@ -43,6 +43,11 @@ class Public::ParticipantsController < ApplicationController
     project = Project.find(params[:project_id])
     participants = project.participants
     @participant = participants.find(params[:id])
+    if project.user == current_user
+      render :edit
+    else
+      redirect_to project_path(project)
+    end
   end
 
   def update

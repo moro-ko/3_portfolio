@@ -47,6 +47,11 @@ class Public::ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    if @project.user == current_user
+      render :edit
+    else
+      redirect_to project_path(@project)
+    end
   end
 
   def update

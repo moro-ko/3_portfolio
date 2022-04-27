@@ -31,6 +31,11 @@ class Public::GroupsController < ApplicationController
   def edit
     @project = Project.find(params[:project_id])
     @group = Group.find(params[:id])
+    if @project.user == current_user
+      render :edit
+    else
+      redirect_to project_group_path(@group)
+    end
   end
 
   def update
