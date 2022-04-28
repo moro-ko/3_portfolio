@@ -16,6 +16,7 @@ class User < ApplicationRecord
   # バリデーション
   validates :name, presence: true, length: { minimum: 2, maximum: 1 }
   validates :email, presence: true
+  validates :introduction, length: { maximum: 50 }
 
   # ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約をかける
   # is_deletedがfalseならtrueを返す

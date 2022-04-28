@@ -12,7 +12,7 @@
     </div>
     <div class="row p-1">
       <div class="col-5 text-right"><%= f.label :グループ名 %></div>
-      <div class="col-5"><%= f.text_field:name %></div>
+      <div class="col-5"><%= f.text_field:name, placeholder: "20characters" %></div>
     </div>
 
     <div class="row">
@@ -21,7 +21,7 @@
     </div>
     <div class="row p-1">
       <div class="col-5 text-right"><%= f.label :メッセージ %></div>
-      <div class="col-5"><%= f.text_area:message %></div>
+      <div class="col-5"><%= f.text_area:message, placeholder: "200characters" %></div>
     </div>
 
     <div class="row">

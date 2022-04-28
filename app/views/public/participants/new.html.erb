@@ -21,15 +21,15 @@
     </div>
     <div class="row p-1">
       <div class="col-5 text-right"><%= f.label :参加希望理由 %></div>
-      <div class="col-5"><%= f.text_area :reason %></div>
+      <div class="col-5"><%= f.text_area :reason, placeholder: "200characters" %></div>
     </div>
     <div class="row p-1">
       <div class="col-5 text-right"><%= f.label :連絡先 %></div>
-      <div class="col-5"><%= f.text_area :contact_address %></div>
+      <div class="col-5"><%= f.text_area :contact_address, placeholder: "20characters" %></div>
     </div>
     <div class="row p-1">
       <div class="col-5 text-right"><%= f.label :応援コメント %></div>
-      <div class="col-5"><%= f.text_area :comment %></div>
+      <div class="col-5"><%= f.text_area :comment, placeholder: "50characters" %></div>
     </div>
     <div class="row p-1">
       <div class="col-5"></div>
