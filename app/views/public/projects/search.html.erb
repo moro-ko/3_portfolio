@@ -1,10 +1,24 @@
+<div class="container p-3">
+  <!--<div class="row justify-content-center">-->
+  <!--  検索枠-->
+  <!--</div>-->
+</div>
 <div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-5 p-3"><h4 class="header">検索プロジェクト一覧</h4><p>search-word　"<%= @keyword %>"</p></div>
-  </div>
   <div class="row justify-conte-center">
-    <div class="col-12">
+    <div class="col-2 p-1">
+      <div class="card-header text-center">カテゴリ検索</div>
+      <div class="card-body">
+        <div class="card-text">
+          <% @categories.each do |category| %>
+            <%= link_to projects_path(id: category.id), class: "link" do %>
+              <p class="item p-0.5">＊<%= category.name %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-9 p-4">
+      <h4 class="header">検索プロジェクト一覧</h4><p>search-word　"<%= @keyword %>"</p>
       <div class ="wrapper grid" >
         <% @projects.each do |project| %>
           <% if project.posting_status == "completed" %>

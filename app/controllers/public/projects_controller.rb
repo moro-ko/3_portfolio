@@ -66,8 +66,10 @@ class Public::ProjectsController < ApplicationController
     if params[:keyword].present?
       @projects = Project.where('title LIKE ?', "%#{params[:keyword]}%")
       @keyword = params[:keyword]
+      @categories = Category.all
     else
       @projects = Project.all
+      @categories = Category.all
     end
   end
 
