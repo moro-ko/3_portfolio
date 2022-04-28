@@ -34,18 +34,20 @@
                 承認済
               <% end %>
               <%= link_to project_path(project) do %>
-                <% if project.image.attached? %>
-                  <%= image_tag project.image, size: "200x120" %>
-                <% else %>
-                  <%= image_tag 'no_image', size: "100x100" %>
-                <% end %>
+                <div class="card-img-top">
+                  <% if project.image.attached? %>
+                    <%= image_tag project.image, size: "200x120" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "100x100" %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title"><%= project.title %></h6>
+                  <!--<p class="card-text">現在支援金額</p>-->
+                  <!--<p class="card-text">支援者数</p>-->
+                  <!--<p class="card-text">残り</p>-->
+                </div>
               <% end %>
-              <div class="card-body">
-                <h6 class="card-title"><%= project.title %></h6>
-                <!--<p class="card-text">現在支援金額</p>-->
-                <!--<p class="card-text">支援者数</p>-->
-                <!--<p class="card-text">残り</p>-->
-              </div>
             </div>
           <% end %>
         </div>
