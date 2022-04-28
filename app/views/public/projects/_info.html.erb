@@ -43,7 +43,6 @@
       </div>
 
       <div class="row justify-content-center pt-3">
-
         <% if admin_signed_in? %>
           <%= link_to "プロジェクト内容を確認する", edit_admin_project_path, class: 'btn btn-ex' %>
         <% elsif user_signed_in? %>

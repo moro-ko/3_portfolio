@@ -25,7 +25,7 @@
       <div class="tab-content">
         <div id="home" class="tab-pane active">
           <p></p>
-          <p><%= @project.content %></p>
+          <p><%= safe_join(@project.content.split("\n"),tag(:br)) %></p>
           <p></p>
         </div>
       </div>
