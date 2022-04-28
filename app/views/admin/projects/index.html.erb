@@ -18,7 +18,7 @@
       <div class ="wrapper grid" >
         <% @projects.each do |project| %>
           <% if project.posting_status == "completed" %>
-            <div class="card text-center" style="width: 14rem; height: 12rem;">
+            <div class="card text-center" style="width: 14rem; height: 13rem;">
                 <div class="card-img-top pt-2">
                   <% if project.image.attached? %>
                     <%= image_tag project.image, size: "200x120" %>

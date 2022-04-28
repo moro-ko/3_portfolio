@@ -27,15 +27,15 @@
       <div class="tab-content p-3">
         <div id="owner" class="wrapper grid">
           <% @owner_projects.each do |project| %>
-            <div class="card text-center" style="width: 14rem; height: 12rem;">
+            <div class="card text-center" style="width: 14rem; height: 13rem;">
               <% if project.posting_status == "examination" %>
-                <p>申請中</p>
+                申請中
               <% else %>
-                <p>承認済</p>
+                承認済
               <% end %>
               <%= link_to project_path(project) do %>
                 <% if project.image.attached? %>
-                  <%= image_tag project.image, size: "100x100" %>
+                  <%= image_tag project.image, size: "200x120" %>
                 <% else %>
                   <%= image_tag 'no_image', size: "100x100" %>
                 <% end %>
