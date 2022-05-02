@@ -7,6 +7,7 @@ class Public::ProjectsController < ApplicationController
     # binding.pry
     @project = Project.new(project_params)
     @project.user_id = current_user.id
+    @project.score = Language.get_data(project_params[:content])
     if @project.save
       redirect_to new_project_return_path(@project)
     else
