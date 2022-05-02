@@ -56,6 +56,7 @@ class Public::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    @project.score = Language.get_data(project_params[:content])
     if @project.update(project_params)
       redirect_to edit_project_return_path(@project)
     else
