@@ -5,23 +5,29 @@
 <!-- Project index-->
 <div class="container">
   <div class="row justify-content-center p-3">
-    <div class="col-9 offset-1">
-      <p>本文</p>
-      <%= safe_join(@project.content.split("\n"),tag(:br)) %><br><br>
-      本文の感情分析スコア<%= @project.score %>
+    <div class="col-10">
+      <div class="content-box">
+        <p><strong>本文　　</strong><button type="button" class="btn btn-outline-info">score <%= @project.score %></button></p><br>
+        <p><%= safe_join(@project.content.split("\n"),tag(:br)) %></p>
+      </div>
     </div>
   </div>
   <div class="row justify-content-center p-3">
     <div class="col-4">
-      <p>ユーザー情報</p>
-      <%= link_to admin_user_path(@project.user.id) do %>
-        <%= @project.user.name %>
-      <% end %>
+      <div class="content-box">
+        <p><strong>ユーザー情報</strong></p>
+        <p><%= link_to admin_user_path(@project.user.id) do %>
+          <%= @project.user.name %>
+        <% end %></p>
+        <p>　</p>
+      </div>
     </div>
-    <div class="col-4">
-      <p>リターン情報</p>
-      <p>支援者:<%= @returnv.b_contents %></p>
-      <p>参加者:<%= @returnv.p_contents %></p>
+    <div class="col-6">
+      <div class="content-box">
+        <p><strong>リターン情報</strong></p>
+        <p>支援者:<%= @returnv.b_contents %></p>
+        <p>参加者:<%= @returnv.p_contents %></p>
+      </div>
     </div>
   </div>
   <div class="row justify-content-center p-3">
