@@ -36,15 +36,15 @@
           <tr><th>支援プロジェクト</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <% @backer_projects.each do |project| %>
+          <% @backer_projects.each do |project| %>
+            <tr>
+              <td>
                 <%= link_to admin_project_path(project) do %>
                   <%= project.title %>
                 <% end %>
-              <% end %>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
@@ -54,15 +54,15 @@
           <tr><th>参加プロジェクト</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <% @participant_projects.each do |project| %>
+          <% @participant_projects.each do |project| %>
+            <tr>
+              <td>
                 <%= link_to admin_project_path(project) do %>
                   <%= project.title %>
                 <% end %>
-              <% end %>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
@@ -72,15 +72,15 @@
           <tr><th>投稿プロジェクト</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <% @owner_projects.each do |project| %>
+          <% @owner_projects.each do |project| %>
+            <tr>
+              <td>
                 <%= link_to admin_project_path(project) do %>
                   <%= project.title %>
                 <% end %>
-              <% end %>
-            </td>
-          </tr>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

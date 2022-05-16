@@ -67,3 +67,6 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# AI機能追加
+gem 'dotenv-rails'
