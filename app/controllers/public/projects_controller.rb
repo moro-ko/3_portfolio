@@ -7,6 +7,7 @@ class Public::ProjectsController < ApplicationController
     # binding.pry
     @project = Project.new(project_params)
     @project.user_id = current_user.id
+    # natural language
     @project.score = Language.get_data(project_params[:content])
     if @project.save
       redirect_to new_project_return_path(@project)
@@ -56,6 +57,7 @@ class Public::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    # natural language
     @project.score = Language.get_data(project_params[:content])
     if @project.update(project_params)
       redirect_to edit_project_return_path(@project)
