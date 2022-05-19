@@ -1,0 +1,125 @@
+<!--不要-->
+
+<!-- Project info -->
+<!--<%#= render "public/projects/info", project: @project, backers: @backers, participants: @participants, total_amount: @total_amount, achievement_rate: @achievement_rate, days_left: @days_left %>-->
+
+<!-- ProjectTab info-->
+<!--<div class="container p-3">-->
+<!--  <div class="row justify-content-center">-->
+<!--    <div class="col-7">-->
+      <!-- nav-tab-->
+<!--      <ul class="nav nav-tabs">-->
+<!--        <li class="nav-item">-->
+<!--          <div class="nav-link"><%#= link_to "ホーム", project_path(@project) %></div>-->
+          <!--<a class="nav-link" href="/projects/1">ホーム</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <div class="nav-link" ><%#= link_to "支援者", project_backers_path(@project) %></div>-->
+          <!--<a class="nav-link" href="/projects/1/backers">支援者</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--          <div class="nav-link active" aria-current="page" ><%#= link_to "参加者", project_participants_path(@project) %></div>-->
+          <!--<a class="nav-link active" aria-current="page" href="/projects/1/participants" tabindex="-1" aria-disabled="true">参加者</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+      <!-- tab-content -->
+<!--      <div class="tab-content">-->
+<!--        <div id="participant" class="tab-pane active">-->
+<!--          <div class="container">-->
+<!--            <div class="row justify-content-center">-->
+<!--              <div class="col-10 offset-1">-->
+
+                <!-- owner -->
+<!--                <%# if user_signed_in? && @project.user_id == current_user.id %>-->
+<!--                  <p>承認済みユーザ一覧</p>-->
+<!--                  <table class="table table-hover table-inverse admin_users_table">-->
+<!--                    <thead class="thead-gray">-->
+<!--                      <tr>-->
+<!--                        <th>参加者</th>-->
+<!--                        <th>応援コメント</th>-->
+<!--                        <th> </th>-->
+<!--                      </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                      <%# @participants.each do |participant| %>-->
+<!--                        <%# if participant.approval_status == "completed" %>-->
+<!--                          <tr>-->
+<!--                            <td><%#= participant.user.name %></td>-->
+<!--                            <td><%#= participant.comment %></td>-->
+<!--                            <td><%#= link_to "内容を確認する", edit_project_participant_path(@project,participant), class: 'btn btn-ex' %></td>-->
+<!--                          </tr>-->
+<!--                        <%# end %>-->
+<!--                      <%# end %>-->
+<!--                    </tbody>-->
+<!--                  </table>-->
+<!--                  <p>承認前ユーザ一覧</p>-->
+<!--                  <table class="table table-hover table-inverse admin_users_table">-->
+<!--                    <thead>-->
+<!--                      <tr>-->
+<!--                        <th>参加者</th>-->
+<!--                        <th>応援コメント</th>-->
+<!--                        <th> </th>-->
+<!--                      </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                      <%# @participants.each do |participant| %>-->
+<!--                        <%# if participant.approval_status == "approval" %>-->
+<!--                          <tr>-->
+<!--                            <td><%#= participant.user.name %></td>-->
+<!--                            <td><%#= participant.comment %></td>-->
+<!--                            <td><%#= link_to "内容を確認する", edit_project_participant_path(@project, participant), class: 'btn btn-ex' %></td>-->
+<!--                          </tr>-->
+<!--                        <%# end %>-->
+<!--                      <%# end %>-->
+<!--                    </tbody>-->
+<!--                  </table>-->
+
+                <!-- not owner -->
+<!--                <%# else %>-->
+<!--                  <table class="table table-hover table-inverse admin_users_table">-->
+<!--                    <thead>-->
+<!--                      <tr>-->
+<!--                        <th>参加者</th>-->
+<!--                        <th>応援コメント</th>-->
+<!--                      </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                      <%# @participants.each do |participant| %>-->
+<!--                        <%# if participant.approval_status == "completed" %>-->
+<!--                          <tr>-->
+<!--                            <td><%#= participant.user.name %></td>-->
+<!--                            <td><%#= participant.comment %></td>-->
+<!--                          </tr>-->
+<!--                        <%# end %>-->
+<!--                      <%# end %>-->
+<!--                    </tbody>-->
+<!--                  </table>-->
+<!--                <%# end %>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="col-4">-->
+      <!-- ユーザ情報 -->
+<!--      <div class="row justify-content-center">-->
+<!--        <div class="col-4 text-center">-->
+<!--          <div class="row justify-content-center">ユーザー情報</div>-->
+<!--          <%# if @project.user.image.attached? %>-->
+<!--            <%#= image_tag @project.user.image, size: "100×100" %>-->
+<!--          <%# else %>-->
+<!--            <#%= image_tag 'no_image', size: "100×100" %>-->
+<!--          <#% end %><br>-->
+<!--          <%#= @project.user.name %>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <!-- リターン情報 -->
+<!--      <div class="row justify-content-center">-->
+<!--        <%#= render "public/returns/show", returnv: @returnv %>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

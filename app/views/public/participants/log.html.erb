@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row p-3">
+    <div class="col-1"></div>
+    <div class="col-5"><h4 class="header">入力内容確認</h4></div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8 offset-1">
+      <table class="table table-hover table-inverse admin_users_table">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>支援タイプ</td><td>参加型</td>
+          </tr>
+          <tr>
+            <td>支援金額</td><td><%= @project.return.p_amount %>円</td>
+          </tr>
+          <tr>
+            <td>支払い方法</td><td>クレジットカード</td>
+          </tr>
+          <tr>
+            <td>参加希望理由</td><td><%= @participant.reason %></td>
+          </tr>
+          <tr>
+            <td>連絡先</td><td><%= @participant.contact_address %></td>
+          </tr>
+          <tr>
+            <td>応援コメント</td><td><%= @participant.comment %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-10 p-3 text-center">
+      <p>内容を確定します。よろしければ「確定する」ボタンを押してください。</p>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-10 p-3 text-center">
+      <%= form_with model: @participant, url: project_participants_path, method: :post do |f| %>
+        <%= f.hidden_field :reason %>
+        <%= f.hidden_field :contact_address %>
+        <%= f.hidden_field :comment %>
+        <%= f.submit "確定する", class: 'btn btn-ex' %>
+      <% end %>
+    </div>
+  </div>
+</div>

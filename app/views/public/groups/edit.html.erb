@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row p-3">
+    <div class="col-5 text-right p-3"><h4 class="header">グループ編集</h4></div>
+  </div>
+
+  <%= form_with model: @group, url: project_group_path, method: :patch do |f| %>
+    <%= render "public/shared/error_messages", resource: @group %>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-5 p-3"><h5>1.グループ名の設定</h5></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :グループ名 %></div>
+      <div class="col-5"><%= f.text_field:name %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-5 p-3"><h5>2.ウェルカムメッセージ</h5></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :メッセージ %></div>
+      <div class="col-5"><%= f.text_area:message %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-5 p-3"><h5>3.グループQRコード</h5></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :画像 %></div>
+      <div class="col-5"><%= f.file_field :image, accept: "image/*" %></div>
+    </div>
+
+    <div class="row p-5">
+      <div class="col-4"></div>
+      <div class="col-5"><%= f.submit "グループ編集", class: 'btn btn-ex ml-5' %></div>
+    </div>
+  <% end %>
+</div>

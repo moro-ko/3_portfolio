@@ -1,0 +1,107 @@
+<!-- User info -->
+<div class="container p-3">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-5 p-3"><h4 class="header">ユーザ情報</h4></div>
+  </div>
+  <div class="row p-3">
+    <div class="col-4 text-center">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, size: "100×100" %>
+      <% else %>
+        <%= image_tag asset_path('no_image'), size: "100×100" %>
+      <% end %><br>
+      <%= @user.name %>
+    </div>
+    <div class="col-8">
+      <%= @user.introduction %><br>
+      <br>
+      <p>会員ステータス：
+        <% if @user.is_deleted == false %>
+          有効
+        <% elsif @user.is_deleted == true %>
+          退会
+        <% end %>
+      </p>
+      <%= link_to "編集する", edit_admin_user_path(@user), class: 'btn btn-ex' %>
+    </div>
+  </div>
+</div>
+<!-- User project -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3 offset-1">
+      <table class="table table-hover table-inverse admin_users_table">
+        <thead class="thead-gray">
+          <tr><th>支援プロジェクト</th></tr>
+        </thead>
+        <tbody>
+          <% @backer_projects.each do |project| %>
+            <tr>
+              <td>
+                <%= link_to admin_project_path(project) do %>
+                  <%= project.title %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3 offset-1">
+      <table class="table table-hover table-inverse admin_users_table">
+        <thead class="thead-gray">
+          <tr><th>参加プロジェクト</th></tr>
+        </thead>
+        <tbody>
+          <% @participant_projects.each do |project| %>
+            <tr>
+              <td>
+                <%= link_to admin_project_path(project) do %>
+                  <%= project.title %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3 offset-1">
+      <table class="table table-hover table-inverse admin_users_table">
+        <thead class="thead-gray">
+          <tr><th>投稿プロジェクト</th></tr>
+        </thead>
+        <tbody>
+          <% @owner_projects.each do |project| %>
+            <tr>
+              <td>
+                <%= link_to admin_project_path(project) do %>
+                  <%= project.title %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+        <!--<%#= paginate @users %>-->
+  </div>
+</div>
+
+
+<!-- render type-->
+
+<!--<div class="container d-flex justify-content-center">-->
+<!--  <div class="row">-->
+<!--    <p>支援プロジェクト</p><br>-->
+<!--    <%#= render "public/users/backer", backer_projects: @backer_projects %>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <p>参加プロジェクト</p>-->
+<!--    <%#= render "public/users/participant", participant_projects: @participant_projects %>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <p>投稿プロジェクト</p>-->
+<!--    <%#= render "public/users/owner", owner_projects: @owner_projects %>-->
+<!--  </div>-->
+<!--</div>-->

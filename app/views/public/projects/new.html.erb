@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row p-3">
+    <div class="col-5 text-right p-3"><h4 class="header">プロジェクト作成</h4></div>
+  </div>
+
+  <%= form_with model: @project, url: projects_path, method: :post do |f| %>
+    <%= render "public/shared/error_messages", resource: @project %>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-5 p-3"><h5>1.目標設定を行いましょう。</h5></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :目標金額 %></div>
+      <div class="col-5"><%= f.text_field:target_amount %>円</div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :募集終了日 %></div>
+      <div class="col-5"><%= f.date_field:end_date %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-5 p-3"><h5>2.概要を記載しましょう。</h5></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :タイトル %></div>
+      <div class="col-5"><%= f.text_field:title, placeholder: "20characters" %></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :本文 %></div>
+      <div class="col-5"><%= f.text_area:content, placeholder: "200characters" %></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :カテゴリ %></div>
+      <div class="col-5"><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :地域 %></div>
+      <div class="col-5"><%= f.select :area, Project.areas.keys, {} %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-5 p-3"><h5>3.ビジュアルを設定しましょう。</h5></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :"イメージ画像(size 5:3)" %></div>
+      <div class="col-5"><%= f.file_field :image, accept: "image/*" %></div>
+    </div>
+
+    <div class="row p-5">
+      <div class="col-4"></div>
+      <div class="col-5"><%= f.submit "リターンの設定に進む", class: 'btn btn-ex ml-5' %></div>
+    </div>
+  <% end %>
+</div>

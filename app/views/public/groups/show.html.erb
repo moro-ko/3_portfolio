@@ -1,0 +1,43 @@
+<div class="container p-3">
+<!--flash メッセージ -->
+  <div class="row justify-content-center">
+    <p><%= flash[:notice] %><%= flash[:alert] %></p>
+  </div>
+  <!-- head -->
+  <div class="row justify-content-center p-3">
+    <div class="col-10 text-center"><h3><%= @group.name %></h3>
+      <div class="row justify-content-center">
+        <div class="col-3">【owner】<%= @group.user.name %></div>
+      </div>
+    </div>
+  </div>
+  <!-- main -->
+  <div class="row justify-content-center">
+    <div class="col-6 p-3">
+      <div class="card" style="width: 35rem; height: 18rem;">
+        <div class="card-title lead p-2"><h5 class="font-monospace text-center">WELCOME</h5></div>
+        <div class="card-text">
+          <p class="text-center"><%= safe_join(@group.message.split("\n"),tag(:br)) %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 p-3">
+      <div class="card" style="width: 15rem; height: 18rem;">
+         <div class="card-img text-center p-3">
+          <% if @group.image.attached? %>
+            <%= image_tag @group.image, size: "150x150" %>
+          <% else %>
+            <%= image_tag 'qr_image', size: "100x100" %>
+          <% end %>
+        </div>
+        <div class="card-text">
+          <p class="p-2">
+            上記QRコードよりグループに<br>参加ください。<br>
+            活動の詳細はこちらから配信<br>
+            いたします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

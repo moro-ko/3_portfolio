@@ -1,0 +1,86 @@
+<!--使用箇所-->
+  <!--[project/show] [backer/index] [participant/index] [admin/projects/show]-->
+
+<!-- Project info -->
+<div class="container p-3">
+  <!--flash メッセージ -->
+  <div class="row justify-content-center">
+    <p><%= flash[:notice] %><%= flash[:alert] %></p>
+  </div>
+  <!-- head -->
+  <div class="row justify-content-center p-3">
+    <div class="col-10 text-center"><h3><%= project.title %></h3>
+      <div class="row justify-content-center">
+        <div class="col-3"><%= project.user.name %></div>
+        <div class="col-3"><%= project.category.name %></div>
+        <div class="col-3"><%= project.area %></div>
+      </div>
+    </div>
+  </div>
+  <!-- main -->
+  <div class="row justify-content-center p-3">
+    <div class="col-6 text-center"><%= image_tag project.image, size: "500x300" %></div>
+
+    <div class="col-4">
+      <div class="row justify-content-center">
+        <!-- 支援総額 -->
+        <p>現在の支援総額　<strong><%= total_amount %>円</strong>（<%= achievement_rate %>%）</p>
+      </div>
+      <div class="row justify-content-center">
+        <p>（目標金額　<%= project.target_amount %>円）</p>
+      </div>
+      <div class="row justify-content-center">
+        <!-- 支援者数 -->
+        <p>支援者数　<strong><%= backers.count %>人</strong></p>
+      </div>
+      <div class="row justify-content-center">
+        <!-- 参加者数 -->
+        <p>参加者数　<strong><%= participants.count %>人</strong></p>
+      </div>
+      <div class="row justify-content-center">
+        <!-- 残り日数-->
+        <p>募集終了まで残り<strong><%= days_left.to_i %>日</strong></p>
+      </div>
+
+      <div class="row justify-content-center pt-3">
+        <% if admin_signed_in? %>
+          <%= link_to "プロジェクト内容を確認する", edit_admin_project_path, class: 'btn btn-ex' %>
+        <% elsif user_signed_in? %>
+          <% if project.user_id == current_user.id %>
+            <p><%= link_to "プロジェクトを編集する", edit_project_path(project), class: 'btn btn-ex' %></p>
+            <p><%= link_to "　オーナー専用ページ　", info_project_groups_path(project), class: 'btn btn-ex' %></p>
+          <% else %>
+          <!--支援機能-->
+            <% if project.backed_by?(current_user) %>
+              <p class="btn btn-ex">　支援済みプロジェクト</p>
+            <% elsif project.parted_by?(current_user) %>
+              <% if project.group.present? %>
+                <p><%= link_to "　参加済みプロジェクト", project_group_path(project, group), class: 'btn btn-ex' %></p>
+              <% else %>
+                <p class="btn btn-ex">　参加済みプロジェクト</p>
+              <% end %>
+            <% elsif project.parting_by?(current_user) %>
+              <p class="btn btn-ex">参加申請中プロジェクト</p>
+            <% else %>
+              <p><%= link_to "プロジェクトを支援する", selects_project_returns_path(project), class: 'btn btn-ex' %></p>
+            <% end %>
+          <!--いいね機能-->
+            <% if project.favorited_by?(current_user) %>
+              <p>
+                <%= link_to project_favorites_path(project), method: :delete, class: 'btn btn-ex' do %>
+                  　 ♥　お気に入り　( <%= project.favorites.count %> )
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to project_favorites_path(project), method: :post, class: 'btn btn-ex' do %>
+                  　 ♡　お気に入り　( <%= project.favorites.count %> )
+                <% end %>
+              </p>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

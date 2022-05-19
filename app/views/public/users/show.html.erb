@@ -1,0 +1,53 @@
+<!-- User info -->
+<%= render "public/users/info" %>
+
+<!-- ProjectTab info -->
+<div class="container p-3">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <!-- nav-tab-->
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/users/my_page">info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/backer">支援プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/participant">参加プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/owner" tabindex="-1" aria-disabled="true">投稿プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/favorite">お気に入りプロジェクト</a>
+        </li>
+      </ul>
+      <!-- tab-content -->
+      <div class="tab-content">
+        <div id="info" class="tab-pane active">
+          <p></p>
+          <p>各種プロジェクト内容の確認</p>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--メモーーーーー-->
+
+<!--支援プロジェクト-->
+  <!--<%#= render "public/users/backer", backer_projects: @backer_projects %>-->
+    <!--renderなしで表示-->
+      <!--<%# @user_backers.each do |backer| %>-->
+      <!--  <%#= backer.project.title %>-->
+      <!--<%# end %>-->
+    <!-- backers/indexへrender-->
+      <!--<%#= render "public/backers/index", user_backers: @user_backers %>-->
+<!--参加プロジェクト-->
+  <!--<%#= render "public/users/participant", participant_projects: @participant_projects %>-->
+<!--投稿プロジェクト-->
+  <!--<%#= render "public/users/owner", owner_projects: @owner_projects %>-->

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row p-3">
+    <div class="col-5 text-right p-3"><h4 class="header">プロジェクト作成</h4></div>
+  </div>
+
+  <%= form_with model: @returnv, url: project_returns_path, method: :post do |f| %>
+    <%= render "public/shared/error_messages", resource: @returnv %>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-5 p-3"><h5>4.リターンの設定を行いましょう。</h5></div>
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-5 p-3">後援型</div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :内容 %></div>
+      <div class="col-5"><%= f.text_area:b_contents, placeholder: "50characters" %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-5 p-3">参加型</div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :参加要件 %></div>
+      <div class="col-5"><%= f.text_area:p_contents, placeholder: "50characters" %></div>
+    </div>
+    <div class="row p-1">
+      <div class="col-5 text-right"><%= f.label :参加者支援金額 %></div>
+      <div class="col-5"><%= f.text_field :p_amount %>円</div>
+    </div>
+
+    <div class="row p-3">
+      <div class="col-5"></div>
+      <div class="col-5"><%= f.submit "保存する", class: 'btn btn-ex' %></div>
+    </div>
+  <% end %>
+</div>

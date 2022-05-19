@@ -1,0 +1,21 @@
+# enum日本語化
+ja:
+  enums:
+    project:
+      posting_status:
+        examination: "審査前"
+        completed: "審査完了"
+    participant:
+      approval_status:
+        approval: "承認前"
+        completed: "承認完了"
+
+# ページネーション
+ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <h3 class="col-5 text-right p-3"><span class="header">Sign up</span></h3>
+  </div>
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :name %></div>
+      <div class="col-5"><%= f.text_field :name %></div>
+    </div>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :email %></div>
+      <div class="col-5"><%= f.email_field :email, autocomplete: "email" %></div>
+    </div>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :password %></div>
+      <div class="col-5"><%= f.password_field :password, autocomplete: "new-password", placeholder: "6characters more" %></div>
+    </div>
+
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :password_confirmation %></div>
+      <div class="col-5"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></div>
+    </div>
+
+    <div class="actions row p-2">
+      <div class="col-5"></div>
+      <div class="col-5"><%= f.submit "Sign up", class: "button" %></div>
+    </div>
+  <% end %>
+
+  <div class="row p-5">
+    <div class="col-4"></div>
+    <div class="col-6">
+      <%= render "public/shared/links" %>
+    </div>
+  </div>
+</div>

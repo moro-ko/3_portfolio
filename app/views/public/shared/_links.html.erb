@@ -1,0 +1,14 @@
+<%- if controller_name != 'sessions' %>
+  既に登録済みの方<br>
+  <%= link_to "こちら", new_session_path(resource_name) %>からログインしてください。
+  <br><br>
+  ゲストユーザーとして閲覧のみご希望の場合<Br>
+    <%= link_to 'こちら', users_guest_sign_in_path, method: :post %>よりログインください。
+<% end %>
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  会員登録がお済みでない方<br>
+  <%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください。
+  <br><br>
+  ゲストユーザーとして閲覧のみご希望の場合<Br>
+    <%= link_to 'こちら', users_guest_sign_in_path, method: :post %>よりログインください。
+<% end %>

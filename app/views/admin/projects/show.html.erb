@@ -1,0 +1,37 @@
+<!-- Project info -->
+<%= render "public/projects/info", project: @project, backers: @backers, participants: @participants,
+    total_amount: @total_amount, achievement_rate: @achievement_rate, days_left: @days_left %>
+
+<!-- Project index-->
+<div class="container">
+  <div class="row justify-content-center p-3">
+    <div class="col-10">
+      <div class="content-box">
+        <p><strong>本文　　</strong><button type="button" class="btn btn-outline-info">score <%= @project.score %></button></p><br>
+        <p><%= safe_join(@project.content.split("\n"),tag(:br)) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center p-3">
+    <div class="col-4">
+      <div class="content-box">
+        <p><strong>ユーザー情報</strong></p>
+        <p><%= link_to admin_user_path(@project.user.id) do %>
+          <%= @project.user.name %>
+        <% end %></p>
+        <p>　</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="content-box">
+        <p><strong>リターン情報</strong></p>
+        <p>支援者:<%= @returnv.b_contents %></p>
+        <p>参加者:<%= @returnv.p_contents %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center p-3">
+    <div class="col-3 text-center"><%= link_to "後援者一覧", admin_project_backers_path(@project), class: 'btn btn-ex' %></div>
+    <div class="col-3 text-center"><%= link_to "参加者一覧", admin_project_participants_path(@project), class: 'btn btn-ex' %></div>
+  </div>
+</div>

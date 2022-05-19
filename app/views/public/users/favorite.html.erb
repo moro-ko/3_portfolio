@@ -1,0 +1,52 @@
+<!-- User info -->
+<%= render "public/users/info" %>
+
+<!-- ProjectTab info -->
+<div class="container p-3">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <!-- nav-tab-->
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="/users/my_page">info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/backer">支援プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/participant">参加プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/owner">投稿プロジェクト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/users/favorite">お気に入りプロジェクト</a>
+        </li>
+      </ul>
+      <!-- tab-content -->
+      <div class="tab-content p-3">
+        <div id="backer" class="wrapper grid">
+          <% @favorite_projects.each do |project| %>
+            <div class="card text-center" style="width: 14rem; height: 13rem;">
+              <%= link_to project_path(project) do %>
+                <div class="card-img-top pt-2">
+                  <% if project.image.attached? %>
+                    <%= image_tag project.image, size: "200x120" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "100x100" %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title"><%= project.title %></h6>
+                  <!--<p class="card-text">現在支援金額</p>-->
+                  <!--<p class="card-text">支援者数</p>-->
+                  <!--<p class="card-text">残り</p>-->
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

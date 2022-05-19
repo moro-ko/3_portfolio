@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <h3 class="col-6 text-right p-3"><span class="header">Sign in -admin-</span></h3>
+  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :email %></div>
+      <div class="col-5"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></div>
+    </div>
+
+    <div class="field row p-2">
+      <div class="col-5 text-right"><%= f.label :password %></div>
+      <div class="col-5"><%= f.password_field :password, autocomplete: "current-password" %></div>
+    </div>
+
+    <div class="actions row p-2">
+      <div class="col-5"></div>
+      <div class="col-5"><%= f.submit "Log in" %></div>
+    </div>
+  <% end %>
+
+  <div class="row p-2">
+    <div class="col-5"></div>
+    <div class="col-5"><%= render "admin/shared/links" %></div>
+  </div>
+</div>
